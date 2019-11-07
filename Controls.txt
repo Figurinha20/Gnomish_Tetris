@@ -1,0 +1,4 @@
+Arrow Left - Move Left
+Arrow Right - Move Right
+Arrow Up - Rotate
+Space - Slam 
