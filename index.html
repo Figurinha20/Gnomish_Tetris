@@ -1,21 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        canvas{
-            border:4px solid orange;
-            width: 300px;
-            height: 600;
-        }
-    </style>
 </head>
+
 <body>
-    <canvas id="tetrisCanvas"7>
+    <canvas id="tetrisCanvas" width="400px" height="800px" style="border:4px solid orange;">
         Your Browser Doesn't Support This
     </canvas>
 </body>
+
+<script>
+    const canvas = document.querySelector('#tetrisCanvas');
+    const ctx = canvas.getContext("2d");
+
+    let H = canvas.height
+    let W = canvas.width
+
+    let pieceSize = 40
+    let fallingMovement = 40
+    let piecePlacementA = W/2-40 //centrar a peça 4x4
+    let piecePlacementB = W/2-80 //centrar a peça FINALLY
+    let piecePlacementC = W/2-40 //centrar a peça S e peça Z
+    //Vou fazer as peças para começar
+
+    //Peça 4x4
+    ctx.fillStyle="#f6d009"
+    ctx.strokeStyle="black"
+    ctx.lineWidth="3"
+    ctx.strokeRect(piecePlacementA, 3, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementA, 3, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementA, 43, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementA, 43, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementA+40, 3, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementA+40, 3, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementA+40, 43, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementA+40, 43, pieceSize, pieceSize)
+
+    //Peça FINALLY
+    ctx.fillStyle="#199ce6"
+    ctx.strokeRect(piecePlacementB, 120, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementB, 120, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementB+40, 120, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementB+40, 120, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementB+80, 120, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementB+80, 120, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementB+120, 120, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementB+120, 120, pieceSize, pieceSize)
+
+    //Peça S
+    ctx.fillStyle="#e91680"
+    ctx.strokeRect(piecePlacementC, 240, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC, 240, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementC+40, 240, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC+40, 240, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementC+40, 200, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC+40, 200, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementC+80, 200, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC+80, 200, pieceSize, pieceSize)
+
+    //Peça Z
+    ctx.fillStyle="#16e97f"
+    ctx.strokeRect(piecePlacementC-40, 320, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC-40, 320, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementC, 320, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC, 320, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementC, 360, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC, 360, pieceSize, pieceSize)
+
+    ctx.strokeRect(piecePlacementC+40, 360, pieceSize, pieceSize)
+    ctx.fillRect(piecePlacementC+40, 360, pieceSize, pieceSize)
+
+    //Por agora fico com estas, they look pretty derpy though
+
+</script>
+
 </html>
