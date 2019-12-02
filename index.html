@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <canvas id="tetrisCanvas" width="400px" height="800px" style="border:4px solid orange;">
+    <canvas id="tetrisCanvas" width="400px" height="920px" style="border:4px solid orange;">
         Your Browser Doesn't Support This
     </canvas>
 </body>
@@ -23,71 +23,120 @@
 
     let pieceSize = 40
     let fallingMovement = 40
-    let piecePlacementA = W/2-40 //centrar a peça 4x4
-    let piecePlacementB = W/2-80 //centrar a peça FINALLY
-    let piecePlacementC = W/2-40 //centrar a peça S e peça Z
+    //GRID
+    for (var x = 0; x < W; x += 40) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, H);
+    }
+
+    for (var y = 0; y < H; y += 40) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(W, y);
+    }
+
+    ctx.strokeStyle = "#FCE3BF";
+    ctx.stroke();
+
     //Vou fazer as peças para começar
 
     //Peça 4x4
-    ctx.fillStyle="#f6d009"
-    ctx.strokeStyle="black"
-    ctx.lineWidth="3"
-    ctx.strokeRect(piecePlacementA, 3, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementA, 3, pieceSize, pieceSize)
+    ctx.fillStyle = "#f6d009"
+    ctx.strokeStyle = "black"
+    ctx.lineWidth = "3"
+    ctx.beginPath()
+    ctx.moveTo(W / 2 - 40, 40)
+    ctx.lineTo(W / 2 + 40, 40)
+    ctx.lineTo(W / 2 + 40, 40 + 80)
+    ctx.lineTo(W / 2 - 40, 40 + 80)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
 
-    ctx.strokeRect(piecePlacementA, 43, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementA, 43, pieceSize, pieceSize)
-
-    ctx.strokeRect(piecePlacementA+40, 3, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementA+40, 3, pieceSize, pieceSize)
-
-    ctx.strokeRect(piecePlacementA+40, 43, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementA+40, 43, pieceSize, pieceSize)
 
     //Peça FINALLY
-    ctx.fillStyle="#199ce6"
-    ctx.strokeRect(piecePlacementB, 120, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementB, 120, pieceSize, pieceSize)
+    ctx.fillStyle = "#199ce6"
+    ctx.beginPath()
+    ctx.moveTo(W / 2 - 80, 160)
+    ctx.lineTo(W / 2 + 80, 160)
+    ctx.lineTo(W / 2 + 80, 160 + 40)
+    ctx.lineTo(W / 2 - 80, 160 + 40)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
 
-    ctx.strokeRect(piecePlacementB+40, 120, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementB+40, 120, pieceSize, pieceSize)
-
-    ctx.strokeRect(piecePlacementB+80, 120, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementB+80, 120, pieceSize, pieceSize)
-
-    ctx.strokeRect(piecePlacementB+120, 120, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementB+120, 120, pieceSize, pieceSize)
 
     //Peça S
-    ctx.fillStyle="#e91680"
-    ctx.strokeRect(piecePlacementC, 240, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC, 240, pieceSize, pieceSize)
-
-    ctx.strokeRect(piecePlacementC+40, 240, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC+40, 240, pieceSize, pieceSize)
-
-    ctx.strokeRect(piecePlacementC+40, 200, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC+40, 200, pieceSize, pieceSize)
-
-    ctx.strokeRect(piecePlacementC+80, 200, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC+80, 200, pieceSize, pieceSize)
+    ctx.fillStyle = "#e91680"
+    ctx.beginPath()
+    ctx.moveTo(W / 2 + 80, 240)
+    ctx.lineTo(W / 2, 240)
+    ctx.lineTo(W / 2, 240 + 40)
+    ctx.lineTo(W / 2 - 40, 240 + 40)
+    ctx.lineTo(W / 2 - 40, 240 + 80)
+    ctx.lineTo(W / 2 + 40, 240 + 80)
+    ctx.lineTo(W / 2 + 40, 240 + 40)
+    ctx.lineTo(W / 2 + 80, 240 + 40)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
 
     //Peça Z
-    ctx.fillStyle="#16e97f"
-    ctx.strokeRect(piecePlacementC-40, 320, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC-40, 320, pieceSize, pieceSize)
+    ctx.fillStyle = "#16e97f"
+    ctx.beginPath()
+    ctx.moveTo(W / 2 - 80, 360)
+    ctx.lineTo(W / 2, 360)
+    ctx.lineTo(W / 2, 360 + 40)
+    ctx.lineTo(W / 2 + 40, 360 + 40)
+    ctx.lineTo(W / 2 + 40, 360 + 80)
+    ctx.lineTo(W / 2 - 40, 360 + 80)
+    ctx.lineTo(W / 2 - 40, 360 + 40)
+    ctx.lineTo(W / 2 - 80, 360 + 40)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
 
-    ctx.strokeRect(piecePlacementC, 320, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC, 320, pieceSize, pieceSize)
+    //Peça L
+    ctx.fillStyle = "#E21D29"
+    ctx.beginPath()
+    ctx.moveTo(W / 2 - 40, 480)
+    ctx.lineTo(W / 2 - 40, 480 + 120)
+    ctx.lineTo(W / 2 + 40, 480 + 120)
+    ctx.lineTo(W / 2 + 40, 480 + 80)
+    ctx.lineTo(W / 2, 480 + 80)
+    ctx.lineTo(W / 2, 480)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
 
-    ctx.strokeRect(piecePlacementC, 360, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC, 360, pieceSize, pieceSize)
+    //Peça J
+    ctx.fillStyle = "#1DE2D6"
+    ctx.beginPath()
+    ctx.moveTo(W / 2 + 40, 640)
+    ctx.lineTo(W / 2 + 40, 640 + 120)
+    ctx.lineTo(W / 2 - 40, 640 + 120)
+    ctx.lineTo(W / 2 - 40, 640 + 80)
+    ctx.lineTo(W / 2, 640 + 80)
+    ctx.lineTo(W / 2, 640)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
 
-    ctx.strokeRect(piecePlacementC+40, 360, pieceSize, pieceSize)
-    ctx.fillRect(piecePlacementC+40, 360, pieceSize, pieceSize)
+    //Peça T
+    ctx.fillStyle = "#A711EE"
+    ctx.beginPath()
+    ctx.moveTo(W / 2 - 40, 800)
+    ctx.lineTo(W / 2 + 80, 800)
+    ctx.lineTo(W / 2 + 80, 800 + 40)
+    ctx.lineTo(W / 2 + 40, 800 + 40)
+    ctx.lineTo(W / 2 + 40, 800 + 80)
+    ctx.lineTo(W / 2, 800 + 80)
+    ctx.lineTo(W / 2, 800 + 40)
+    ctx.lineTo(W / 2 - 40, 800 + 40)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
 
     //Por agora fico com estas, they look pretty derpy though
-
 </script>
 
 </html>
