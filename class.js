@@ -1,11 +1,10 @@
-
 let audio = document.getElementById("ooh")
 //comprimento de aresta de um quadrado SUPONHO porque n consigo testar
 let unit = 40;
 
 class Tetronimo {
     constructor() {
-        this.x = W/2;
+        this.x = W / 2;
         this.y = unit;
 
         //definir tetronimo
@@ -16,20 +15,33 @@ class Tetronimo {
 
         this.color = "dead"
 
+        //para sabermos a orientação da peça
+        this.angle = 0
+
 
     }
 
     update() {
         //queda da peça
-        this.y += unit;
+        if (this.set == false) {
+            this.y += unit;
+        }
+
     }
 
     //movement por listener??? Isto provavvelmente faz-se numa só função
-    moverL(){
-        this.x -= unit;
+    move(moveInput) {
+        if (moveInput == "left" && this.set == false) {
+            this.x -= unit;
+        } else if (moveInput == "right" && this.set == false) {
+            this.x += unit;
+        }
+
     }
-    moveR(){
-        this.x += unit;
+
+
+    rotate(rotInput) {
+        //left ou right
     }
 
     draw() {
@@ -66,12 +78,12 @@ class Tetronimo {
                 //Peça S
                 ctx.fillStyle = "#e91680"
                 ctx.beginPath()
-                ctx.moveTo(this.x + unit*2, this.y)
+                ctx.moveTo(this.x + unit * 2, this.y)
                 ctx.lineTo(this.x, this.y)
                 ctx.lineTo(this.x, this.y + unit)
                 ctx.lineTo(this.x - unit, this.y + unit)
-                ctx.lineTo(this.x - unit, this.y + unit*2)
-                ctx.lineTo(this.x + unit, this.y + unit*2)
+                ctx.lineTo(this.x - unit, this.y + unit * 2)
+                ctx.lineTo(this.x + unit, this.y + unit * 2)
                 ctx.lineTo(this.x + unit, this.y + unit)
                 ctx.lineTo(this.x + unit, this.y + unit)
                 ctx.closePath()
@@ -83,14 +95,14 @@ class Tetronimo {
                 //Peça Z
                 ctx.fillStyle = "#16e97f"
                 ctx.beginPath()
-                ctx.moveTo(this.x - unit*2, this.y)
+                ctx.moveTo(this.x - unit * 2, this.y)
                 ctx.lineTo(this.x, this.y)
                 ctx.lineTo(this.x, this.y + unit)
                 ctx.lineTo(this.x + unit, this.y + unit)
-                ctx.lineTo(this.x + unit, this.y + unit*2)
-                ctx.lineTo(this.x - unit, this.y + unit*2)
+                ctx.lineTo(this.x + unit, this.y + unit * 2)
+                ctx.lineTo(this.x - unit, this.y + unit * 2)
                 ctx.lineTo(this.x - unit, this.y + unit)
-                ctx.lineTo(this.x - unit*2, this.y + unit)
+                ctx.lineTo(this.x - unit * 2, this.y + unit)
                 ctx.closePath()
                 ctx.fill()
                 ctx.stroke()
@@ -101,10 +113,10 @@ class Tetronimo {
                 ctx.fillStyle = "#E21D29"
                 ctx.beginPath()
                 ctx.moveTo(this.x - unit, this.y)
-                ctx.lineTo(this.x - unit, this.y + unit*3)
-                ctx.lineTo(this.x + unit, this.y + unit*3)
-                ctx.lineTo(this.x + unit, this.y + unit*2)
-                ctx.lineTo(this.x, this.y + unit*2)
+                ctx.lineTo(this.x - unit, this.y + unit * 3)
+                ctx.lineTo(this.x + unit, this.y + unit * 3)
+                ctx.lineTo(this.x + unit, this.y + unit * 2)
+                ctx.lineTo(this.x, this.y + unit * 2)
                 ctx.lineTo(this.x, this.y)
                 ctx.closePath()
                 ctx.fill()
@@ -116,10 +128,10 @@ class Tetronimo {
                 ctx.fillStyle = "#1DE2D6"
                 ctx.beginPath()
                 ctx.moveTo(this.x + unit, this.y)
-                ctx.lineTo(this.x + unit, this.y + unit*3)
-                ctx.lineTo(this.x - unit, this.y + unit*3)
-                ctx.lineTo(this.x - unit, this.y + unit*2)
-                ctx.lineTo(this.x, this.y + unit*2)
+                ctx.lineTo(this.x + unit, this.y + unit * 3)
+                ctx.lineTo(this.x - unit, this.y + unit * 3)
+                ctx.lineTo(this.x - unit, this.y + unit * 2)
+                ctx.lineTo(this.x, this.y + unit * 2)
                 ctx.lineTo(this.x, this.y)
                 ctx.closePath()
                 ctx.fill()
@@ -131,11 +143,11 @@ class Tetronimo {
                 ctx.fillStyle = "#A711EE"
                 ctx.beginPath()
                 ctx.moveTo(this.x - unit, this.y)
-                ctx.lineTo(this.x + unit*2, this.y)
-                ctx.lineTo(this.x + unit*2, this.y + unit)
+                ctx.lineTo(this.x + unit * 2, this.y)
+                ctx.lineTo(this.x + unit * 2, this.y + unit)
                 ctx.lineTo(this.x + unit, this.y + unit)
-                ctx.lineTo(this.x + unit, this.y + unit*2)
-                ctx.lineTo(this.x, this.y + unit*2)
+                ctx.lineTo(this.x + unit, this.y + unit * 2)
+                ctx.lineTo(this.x, this.y + unit * 2)
                 ctx.lineTo(this.x, this.y + unit)
                 ctx.lineTo(this.x - unit, this.y + unit)
                 ctx.closePath()
@@ -152,7 +164,7 @@ class Tetronimo {
         //help
     }
 
-    slam(){
+    slam() {
         //you know exactly what this is and what it means
         audio.play();
     }
