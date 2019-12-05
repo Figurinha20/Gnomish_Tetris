@@ -22,121 +22,181 @@
     let W = canvas.width
 
     let pieceSize = 40
-    let fallingMovement = 40
-    //GRID
-    for (var x = 0; x < W; x += 40) {
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, H);
-    }
-
-    for (var y = 0; y < H; y += 40) {
-        ctx.moveTo(0, y);
-        ctx.lineTo(W, y);
-    }
-
-    ctx.strokeStyle = "#FCE3BF";
-    ctx.stroke();
+    let timer = 0
 
     //Vou fazer as peças para começar
+    class Tetronimo {
+        constructor() {
+            this.randomTetronimo = Math.floor(Math.random() * 7);
+            this.y = 0;
+            this.fallingMovement = 40
+        }
 
-    //Peça 4x4
-    ctx.fillStyle = "#f6d009"
-    ctx.strokeStyle = "black"
-    ctx.lineWidth = "3"
-    ctx.beginPath()
-    ctx.moveTo(W / 2 - 40, 40)
-    ctx.lineTo(W / 2 + 40, 40)
-    ctx.lineTo(W / 2 + 40, 40 + 80)
-    ctx.lineTo(W / 2 - 40, 40 + 80)
-    ctx.closePath()
-    ctx.fill()
-    ctx.stroke()
+        draw() {
+            switch (this.randomTetronimo) {
+                case 0:
+                    //Peça 4x4
+                    ctx.fillStyle = "#f6d009"
+                    ctx.strokeStyle = "black"
+                    ctx.lineWidth = "3"
+                    ctx.beginPath()
+                    ctx.moveTo(W / 2 - 40, this.y)
+                    ctx.lineTo(W / 2 + 40, this.y)
+                    ctx.lineTo(W / 2 + 40, this.y + 80)
+                    ctx.lineTo(W / 2 - 40, this.y + 80)
+                    ctx.closePath()
+                    ctx.fill()
+                    ctx.stroke()
+                    break;
+
+                case 1:
+                    //Peça FINALLY
+                    ctx.fillStyle = "#199ce6"
+                    ctx.beginPath()
+                    ctx.moveTo(W / 2 - 80, this.y)
+                    ctx.lineTo(W / 2 + 80, this.y)
+                    ctx.lineTo(W / 2 + 80, this.y + 40)
+                    ctx.lineTo(W / 2 - 80, this.y + 40)
+                    ctx.closePath()
+                    ctx.fill()
+                    ctx.stroke()
 
 
-    //Peça FINALLY
-    ctx.fillStyle = "#199ce6"
-    ctx.beginPath()
-    ctx.moveTo(W / 2 - 80, 160)
-    ctx.lineTo(W / 2 + 80, 160)
-    ctx.lineTo(W / 2 + 80, 160 + 40)
-    ctx.lineTo(W / 2 - 80, 160 + 40)
-    ctx.closePath()
-    ctx.fill()
-    ctx.stroke()
+                    break;
 
+                case 2:
+                    //Peça S
+                    ctx.fillStyle = "#e91680"
+                    ctx.beginPath()
+                    ctx.moveTo(W / 2 + 80, this.y)
+                    ctx.lineTo(W / 2, this.y)
+                    ctx.lineTo(W / 2, this.y + 40)
+                    ctx.lineTo(W / 2 - 40, this.y + 40)
+                    ctx.lineTo(W / 2 - 40, this.y + 80)
+                    ctx.lineTo(W / 2 + 40, this.y + 80)
+                    ctx.lineTo(W / 2 + 40, this.y + 40)
+                    ctx.lineTo(W / 2 + 80, this.y + 40)
+                    ctx.closePath()
+                    ctx.fill()
+                    ctx.stroke()
 
-    //Peça S
-    ctx.fillStyle = "#e91680"
-    ctx.beginPath()
-    ctx.moveTo(W / 2 + 80, 240)
-    ctx.lineTo(W / 2, 240)
-    ctx.lineTo(W / 2, 240 + 40)
-    ctx.lineTo(W / 2 - 40, 240 + 40)
-    ctx.lineTo(W / 2 - 40, 240 + 80)
-    ctx.lineTo(W / 2 + 40, 240 + 80)
-    ctx.lineTo(W / 2 + 40, 240 + 40)
-    ctx.lineTo(W / 2 + 80, 240 + 40)
-    ctx.closePath()
-    ctx.fill()
-    ctx.stroke()
+                    break;
 
-    //Peça Z
-    ctx.fillStyle = "#16e97f"
-    ctx.beginPath()
-    ctx.moveTo(W / 2 - 80, 360)
-    ctx.lineTo(W / 2, 360)
-    ctx.lineTo(W / 2, 360 + 40)
-    ctx.lineTo(W / 2 + 40, 360 + 40)
-    ctx.lineTo(W / 2 + 40, 360 + 80)
-    ctx.lineTo(W / 2 - 40, 360 + 80)
-    ctx.lineTo(W / 2 - 40, 360 + 40)
-    ctx.lineTo(W / 2 - 80, 360 + 40)
-    ctx.closePath()
-    ctx.fill()
-    ctx.stroke()
+                case 3:
+                    //Peça Z
+                    ctx.fillStyle = "#16e97f"
+                    ctx.beginPath()
+                    ctx.moveTo(W / 2 - 80, this.y)
+                    ctx.lineTo(W / 2, this.y)
+                    ctx.lineTo(W / 2, this.y + 40)
+                    ctx.lineTo(W / 2 + 40, this.y + 40)
+                    ctx.lineTo(W / 2 + 40, this.y + 80)
+                    ctx.lineTo(W / 2 - 40, this.y + 80)
+                    ctx.lineTo(W / 2 - 40, this.y + 40)
+                    ctx.lineTo(W / 2 - 80, this.y + 40)
+                    ctx.closePath()
+                    ctx.fill()
+                    ctx.stroke()
 
-    //Peça L
-    ctx.fillStyle = "#E21D29"
-    ctx.beginPath()
-    ctx.moveTo(W / 2 - 40, 480)
-    ctx.lineTo(W / 2 - 40, 480 + 120)
-    ctx.lineTo(W / 2 + 40, 480 + 120)
-    ctx.lineTo(W / 2 + 40, 480 + 80)
-    ctx.lineTo(W / 2, 480 + 80)
-    ctx.lineTo(W / 2, 480)
-    ctx.closePath()
-    ctx.fill()
-    ctx.stroke()
+                    break;
+                case 4:
+                    //Peça L
+                    ctx.fillStyle = "#E21D29"
+                    ctx.beginPath()
+                    ctx.moveTo(W / 2 - 40, this.y)
+                    ctx.lineTo(W / 2 - 40, this.y + 120)
+                    ctx.lineTo(W / 2 + 40, this.y + 120)
+                    ctx.lineTo(W / 2 + 40, this.y + 80)
+                    ctx.lineTo(W / 2, this.y + 80)
+                    ctx.lineTo(W / 2, this.y)
+                    ctx.closePath()
+                    ctx.fill()
+                    ctx.stroke()
 
-    //Peça J
-    ctx.fillStyle = "#1DE2D6"
-    ctx.beginPath()
-    ctx.moveTo(W / 2 + 40, 640)
-    ctx.lineTo(W / 2 + 40, 640 + 120)
-    ctx.lineTo(W / 2 - 40, 640 + 120)
-    ctx.lineTo(W / 2 - 40, 640 + 80)
-    ctx.lineTo(W / 2, 640 + 80)
-    ctx.lineTo(W / 2, 640)
-    ctx.closePath()
-    ctx.fill()
-    ctx.stroke()
+                    break;
+                case 5:
+                    //Peça J
+                    ctx.fillStyle = "#1DE2D6"
+                    ctx.beginPath()
+                    ctx.moveTo(W / 2 + 40, this.y)
+                    ctx.lineTo(W / 2 + 40, this.y + 120)
+                    ctx.lineTo(W / 2 - 40, this.y + 120)
+                    ctx.lineTo(W / 2 - 40, this.y + 80)
+                    ctx.lineTo(W / 2, this.y + 80)
+                    ctx.lineTo(W / 2, this.y)
+                    ctx.closePath()
+                    ctx.fill()
+                    ctx.stroke()
 
-    //Peça T
-    ctx.fillStyle = "#A711EE"
-    ctx.beginPath()
-    ctx.moveTo(W / 2 - 40, 800)
-    ctx.lineTo(W / 2 + 80, 800)
-    ctx.lineTo(W / 2 + 80, 800 + 40)
-    ctx.lineTo(W / 2 + 40, 800 + 40)
-    ctx.lineTo(W / 2 + 40, 800 + 80)
-    ctx.lineTo(W / 2, 800 + 80)
-    ctx.lineTo(W / 2, 800 + 40)
-    ctx.lineTo(W / 2 - 40, 800 + 40)
-    ctx.closePath()
-    ctx.fill()
-    ctx.stroke()
+                    break;
+                case 6:
+                    //Peça T
+                    ctx.fillStyle = "#A711EE"
+                    ctx.beginPath()
+                    ctx.moveTo(W / 2 - 40, this.y)
+                    ctx.lineTo(W / 2 + 80, this.y)
+                    ctx.lineTo(W / 2 + 80, this.y + 40)
+                    ctx.lineTo(W / 2 + 40, this.y + 40)
+                    ctx.lineTo(W / 2 + 40, this.y + 80)
+                    ctx.lineTo(W / 2, this.y + 80)
+                    ctx.lineTo(W / 2, this.y + 40)
+                    ctx.lineTo(W / 2 - 40, this.y + 40)
+                    ctx.closePath()
+                    ctx.fill()
+                    ctx.stroke()
 
-    //Por agora fico com estas, they look pretty derpy though
+                    break;
+                default:
+                    alert("oi?")
+                    break;
+            }
+        }
+        update() {
+            timer++
+            if (timer == 50) {
+                this.y += this.fallingMovement
+                timer = 0
+            }
+        }
+    }
+
+    let gameArray = new Array();
+    for (let i = 0; i < 1; i++) {
+        gameArray.push(new Tetronimo())
+    }
+
+    function render() {
+        //clear canvas
+        ctx.fillStyle = "rgba(255, 255, 255)"
+        ctx.fillRect(0, 0, W, H)
+
+        //draw GRID
+        for (var x = 0; x < W; x += 40) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, H);
+        }
+
+        for (var y = 0; y < H; y += 40) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(W, y);
+        }
+
+        ctx.strokeStyle = "#FCE3BF";
+        ctx.stroke();
+
+        ctx.strokeStyle = "black"
+        ctx.lineWidth = "3"
+
+        //draw & update
+        gameArray.forEach(function (tetronimo) {
+            tetronimo.draw();
+            tetronimo.update();
+        });
+
+        window.requestAnimationFrame(render)
+    }
+
+    render();
 </script>
 
 </html>
