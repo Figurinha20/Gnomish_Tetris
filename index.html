@@ -12,12 +12,6 @@
     <canvas id="tetrisCanvas" width="400px" height="920px" style="border:4px solid orange;">
         Your Browser Doesn't Support This
     </canvas>
-
-    <audio id="ooh">
-        <source src="notexactlywhatyouthinkitis.ogg" type="audio/ogg">
-        <source src="notexactlywhatyouthinkitis.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio>
 </body>
 
 <script>
@@ -30,12 +24,19 @@
     let pieceSize = 40
     let timer = 0
 
+    //Controls
+    let rightKey = false;
+    let leftKey = false;
+    let upKey = false;
+    let downKey = false;
+
     //Vou fazer as peças para começar
     class Tetronimo {
         constructor() {
             this.randomTetronimo = Math.floor(Math.random() * 7);
             this.y = 0;
             this.fallingMovement = 40
+            this.x = W / 2
         }
 
         draw() {
@@ -46,10 +47,10 @@
                     ctx.strokeStyle = "black"
                     ctx.lineWidth = "3"
                     ctx.beginPath()
-                    ctx.moveTo(W / 2 - 40, this.y)
-                    ctx.lineTo(W / 2 + 40, this.y)
-                    ctx.lineTo(W / 2 + 40, this.y + 80)
-                    ctx.lineTo(W / 2 - 40, this.y + 80)
+                    ctx.moveTo(this.x - 40, this.y)
+                    ctx.lineTo(this.x + 40, this.y)
+                    ctx.lineTo(this.x + 40, this.y + 80)
+                    ctx.lineTo(this.x - 40, this.y + 80)
                     ctx.closePath()
                     ctx.fill()
                     ctx.stroke()
@@ -59,10 +60,10 @@
                     //Peça FINALLY
                     ctx.fillStyle = "#199ce6"
                     ctx.beginPath()
-                    ctx.moveTo(W / 2 - 80, this.y)
-                    ctx.lineTo(W / 2 + 80, this.y)
-                    ctx.lineTo(W / 2 + 80, this.y + 40)
-                    ctx.lineTo(W / 2 - 80, this.y + 40)
+                    ctx.moveTo(this.x - 80, this.y)
+                    ctx.lineTo(this.x + 80, this.y)
+                    ctx.lineTo(this.x + 80, this.y + 40)
+                    ctx.lineTo(this.x - 80, this.y + 40)
                     ctx.closePath()
                     ctx.fill()
                     ctx.stroke()
@@ -74,14 +75,14 @@
                     //Peça S
                     ctx.fillStyle = "#e91680"
                     ctx.beginPath()
-                    ctx.moveTo(W / 2 + 80, this.y)
-                    ctx.lineTo(W / 2, this.y)
-                    ctx.lineTo(W / 2, this.y + 40)
-                    ctx.lineTo(W / 2 - 40, this.y + 40)
-                    ctx.lineTo(W / 2 - 40, this.y + 80)
-                    ctx.lineTo(W / 2 + 40, this.y + 80)
-                    ctx.lineTo(W / 2 + 40, this.y + 40)
-                    ctx.lineTo(W / 2 + 80, this.y + 40)
+                    ctx.moveTo(this.x + 80, this.y)
+                    ctx.lineTo(this.x, this.y)
+                    ctx.lineTo(this.x, this.y + 40)
+                    ctx.lineTo(this.x - 40, this.y + 40)
+                    ctx.lineTo(this.x - 40, this.y + 80)
+                    ctx.lineTo(this.x + 40, this.y + 80)
+                    ctx.lineTo(this.x + 40, this.y + 40)
+                    ctx.lineTo(this.x + 80, this.y + 40)
                     ctx.closePath()
                     ctx.fill()
                     ctx.stroke()
@@ -92,14 +93,14 @@
                     //Peça Z
                     ctx.fillStyle = "#16e97f"
                     ctx.beginPath()
-                    ctx.moveTo(W / 2 - 80, this.y)
-                    ctx.lineTo(W / 2, this.y)
-                    ctx.lineTo(W / 2, this.y + 40)
-                    ctx.lineTo(W / 2 + 40, this.y + 40)
-                    ctx.lineTo(W / 2 + 40, this.y + 80)
-                    ctx.lineTo(W / 2 - 40, this.y + 80)
-                    ctx.lineTo(W / 2 - 40, this.y + 40)
-                    ctx.lineTo(W / 2 - 80, this.y + 40)
+                    ctx.moveTo(this.x - 80, this.y)
+                    ctx.lineTo(this.x, this.y)
+                    ctx.lineTo(this.x, this.y + 40)
+                    ctx.lineTo(this.x + 40, this.y + 40)
+                    ctx.lineTo(this.x + 40, this.y + 80)
+                    ctx.lineTo(this.x - 40, this.y + 80)
+                    ctx.lineTo(this.x - 40, this.y + 40)
+                    ctx.lineTo(this.x - 80, this.y + 40)
                     ctx.closePath()
                     ctx.fill()
                     ctx.stroke()
@@ -109,12 +110,12 @@
                     //Peça L
                     ctx.fillStyle = "#E21D29"
                     ctx.beginPath()
-                    ctx.moveTo(W / 2 - 40, this.y)
-                    ctx.lineTo(W / 2 - 40, this.y + 120)
-                    ctx.lineTo(W / 2 + 40, this.y + 120)
-                    ctx.lineTo(W / 2 + 40, this.y + 80)
-                    ctx.lineTo(W / 2, this.y + 80)
-                    ctx.lineTo(W / 2, this.y)
+                    ctx.moveTo(this.x - 40, this.y)
+                    ctx.lineTo(this.x - 40, this.y + 120)
+                    ctx.lineTo(this.x + 40, this.y + 120)
+                    ctx.lineTo(this.x + 40, this.y + 80)
+                    ctx.lineTo(this.x, this.y + 80)
+                    ctx.lineTo(this.x, this.y)
                     ctx.closePath()
                     ctx.fill()
                     ctx.stroke()
@@ -124,12 +125,12 @@
                     //Peça J
                     ctx.fillStyle = "#1DE2D6"
                     ctx.beginPath()
-                    ctx.moveTo(W / 2 + 40, this.y)
-                    ctx.lineTo(W / 2 + 40, this.y + 120)
-                    ctx.lineTo(W / 2 - 40, this.y + 120)
-                    ctx.lineTo(W / 2 - 40, this.y + 80)
-                    ctx.lineTo(W / 2, this.y + 80)
-                    ctx.lineTo(W / 2, this.y)
+                    ctx.moveTo(this.x + 40, this.y)
+                    ctx.lineTo(this.x + 40, this.y + 120)
+                    ctx.lineTo(this.x - 40, this.y + 120)
+                    ctx.lineTo(this.x - 40, this.y + 80)
+                    ctx.lineTo(this.x, this.y + 80)
+                    ctx.lineTo(this.x, this.y)
                     ctx.closePath()
                     ctx.fill()
                     ctx.stroke()
@@ -139,14 +140,14 @@
                     //Peça T
                     ctx.fillStyle = "#A711EE"
                     ctx.beginPath()
-                    ctx.moveTo(W / 2 - 40, this.y)
-                    ctx.lineTo(W / 2 + 80, this.y)
-                    ctx.lineTo(W / 2 + 80, this.y + 40)
-                    ctx.lineTo(W / 2 + 40, this.y + 40)
-                    ctx.lineTo(W / 2 + 40, this.y + 80)
-                    ctx.lineTo(W / 2, this.y + 80)
-                    ctx.lineTo(W / 2, this.y + 40)
-                    ctx.lineTo(W / 2 - 40, this.y + 40)
+                    ctx.moveTo(this.x - 40, this.y)
+                    ctx.lineTo(this.x + 80, this.y)
+                    ctx.lineTo(this.x + 80, this.y + 40)
+                    ctx.lineTo(this.x + 40, this.y + 40)
+                    ctx.lineTo(this.x + 40, this.y + 80)
+                    ctx.lineTo(this.x, this.y + 80)
+                    ctx.lineTo(this.x, this.y + 40)
+                    ctx.lineTo(this.x - 40, this.y + 40)
                     ctx.closePath()
                     ctx.fill()
                     ctx.stroke()
@@ -159,10 +160,11 @@
         }
         update() {
             timer++
-            if (timer == 50) {
+            if (timer == 10) {
                 this.y += this.fallingMovement
                 timer = 0
             }
+
         }
     }
 
@@ -190,19 +192,69 @@
         ctx.strokeStyle = "#FCE3BF";
         ctx.stroke();
 
+
+        //handler for keydown
+        function ArrowPressed(e) {
+            if (e.key == 'ArrowRight') {
+                rightKey = true; //Canvas#2
+            }
+
+            if (e.key == 'ArrowLeft') {
+                leftKey = true; //Canvas#2
+            }
+
+            if (e.key == 'ArrowUp') {
+                upKey = true; //Canvas#2
+            }
+
+            if (e.key == 'ArrowDown') {
+                downKey = true; //Canvas#2
+            }
+        }
+
+        //handler for keyup
+        function ArrowReleased(e) {
+            if (e.key == 'ArrowRight') {
+                rightKey = false; //Canvas#2
+            }
+
+            if (e.key == 'ArrowLeft') {
+                leftKey = false; //Canvas#2
+            }
+
+            if (e.key == 'ArrowUp') {
+                upKey = false; //Canvas#2
+            }
+
+            if (e.key == 'ArrowDown') {
+                downKey = false; //Canvas#2
+            }
+        }
+
+        //sets handlers for events keydown & keyup
+        window.addEventListener('keydown', ArrowPressed);
+        window.addEventListener('keyup', ArrowReleased);
+
         ctx.strokeStyle = "black"
         ctx.lineWidth = "3"
 
         //draw & update
         gameArray.forEach(function (tetronimo) {
+            if (rightKey==true){
+                tetronimo.x += 40
+            }
+            if (leftKey){
+                tetronimo.x -= 40
+            }
+
             tetronimo.draw();
             tetronimo.update();
+
         });
 
-        window.requestAnimationFrame(render)
     }
-
-    render();
+    
+    setInterval(render, 95)
 </script>
 
 </html>
