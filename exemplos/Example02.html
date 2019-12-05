@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IMAGES</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500" style="border:solid 2px black">
+        Your browser does not support HTML5 Canvas.
+    </canvas>
+
+    <script>
+        const canvas = document.querySelector('#myCanvas');
+        const ctx = canvas.getContext("2d");
+        const W = canvas.width;
+        const H = canvas.height;
+
+        let img = new Image();
+        img.src = `../imagens/Tetronimos.png`
+        let frameIndex = 1;
+
+        img.onload = function () {
+            setInterval(render, 500)
+        }
+
+        function render() {
+            ctx.clearRect(0, 0, W, H);
+
+            switch (frameIndex) {
+
+                case 0:
+                    ctx.drawImage(img, 0, 0, 85, 85, W / 2, H / 2, 85, 85)
+                    break;
+
+                case 1:
+                    ctx.drawImage(img, 85, 0, 120, 120, W / 2, H / 2, 45, 120)
+                    break;
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

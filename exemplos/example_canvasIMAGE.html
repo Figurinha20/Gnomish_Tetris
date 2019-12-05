@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tétris</title>
+</head>
+
+<body>
+    <canvas id="tetrisCanvas" width="600px" height="600px" style="border:4px solid orange;">
+        Your Browser Doesn't Support This
+    </canvas>
+
+</body>
+<script>
+    //drawImage(src, [sx, sy, sw, sh], dx, dy, [dw, dh])
+    //      quanto da imagem, coordenadas onde começa a desenhar, coordenadas onde acaba
+    const canvas = document.querySelector('#tetrisCanvas');
+    const ctx = canvas.getContext("2d");
+
+    let H = canvas.height
+    let W = canvas.width
+
+
+    let gnome = new Image();
+    gnome.src = `../imagens/gnome.jpg`
+
+    gnome.onload = function (){
+        ctx.drawImage(gnome,0, 0 , H , W)
+    }
+    
+</script>
