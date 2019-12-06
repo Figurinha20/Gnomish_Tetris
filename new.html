@@ -49,54 +49,68 @@
                 case 0:
                     //Peça 4x4
                     ctx.fillStyle = "#f6d009"
-                    this.placement = [[1, 1],
-                        [1, 1]]
+                    this.placement = [
+                        [1, 1],
+                        [1, 1]
+                    ]
                     break;
 
                 case 1:
                     //Peça FINALLY
                     ctx.fillStyle = "#199ce6"
-                    this.placement = [[0, 1, 0, 0],
+                    this.placement = [
                         [0, 1, 0, 0],
                         [0, 1, 0, 0],
-                        [0, 1, 0, 0]]
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0]
+                    ]
                     break;
 
                 case 2:
                     //Peça S
                     ctx.fillStyle = "#e91680"
-                    this.placement = [[0, 1, 1],
+                    this.placement = [
+                        [0, 1, 1],
                         [1, 1, 0],
-                        [0, 0, 0]]
+                        [0, 0, 0]
+                    ]
                     break;
 
                 case 3:
                     //Peça Z
                     ctx.fillStyle = "#16e97f"
-                    this.placement = [[1, 1, 0],
+                    this.placement = [
+                        [1, 1, 0],
                         [0, 1, 1],
-                        [0, 0, 0]]
+                        [0, 0, 0]
+                    ]
                     break;
                 case 4:
                     //Peça L
                     ctx.fillStyle = "#E21D29"
-                    this.placement = [[0, 1, 0],
+                    this.placement = [
                         [0, 1, 0],
-                        [0, 1, 1]]
+                        [0, 1, 0],
+                        [0, 1, 1]
+                    ]
                     break;
                 case 5:
                     //Peça J
                     ctx.fillStyle = "#1DE2D6"
-                    this.placement = [[0, 1, 0],
+                    this.placement = [
                         [0, 1, 0],
-                        [1, 1, 0]]
+                        [0, 1, 0],
+                        [1, 1, 0]
+                    ]
                     break;
                 case 6:
                     //Peça T
                     ctx.fillStyle = "#A711EE"
-                    this.placement = [[0, 0, 0],
+                    this.placement = [
+                        [0, 0, 0],
                         [1, 1, 1],
-                        [0, 1, 0]]
+                        [0, 1, 0]
+                    ]
                     break;
                 default:
                     alert("oi?")
@@ -104,32 +118,62 @@
             }
         }
         draw() {
-            
-                //this.x & this.y é o centro do array bidimensional
-                //variavel de incremento de this.y que varia com o i ou seja a row
-                let row = -pieceSize;
-                //a mesma coisa mas para o x a col
-                let col = -pieceSize;
 
-                for (let i = 0; i < this.placement.length; i++) {
-                    
-                    for (let j = 0; j < this.placement[i].length; j++) {
-                        //check if draw
-                        if (this.placement[i][j] == 1) {
-                            ctx.fillRect(this.x + col, this.y + row, pieceSize, pieceSize)
-                            ctx.strokeRect(this.x + col, this.y + row, pieceSize, pieceSize)
-                        }
-                       //mudança de col
-                       col += pieceSize 
+            //this.x & this.y é o centro do array bidimensional
+            //variavel de incremento de this.y que varia com o i ou seja a row
+            let row = -pieceSize;
+            //a mesma coisa mas para o x a col
+            let col = -pieceSize;
+
+            for (let i = 0; i < this.placement.length; i++) {
+
+                for (let j = 0; j < this.placement[i].length; j++) {
+                    //check if draw
+                    if (this.placement[i][j] == 1) {
+                        ctx.fillRect(this.x + col, this.y + row, pieceSize, pieceSize)
+                        ctx.strokeRect(this.x + col, this.y + row, pieceSize, pieceSize)
                     }
-
-                    //mudança de row
-                    row += pieceSize
-                    //reset da col
-                    col = -pieceSize 
+                    //mudança de col
+                    col += pieceSize
                 }
-            
-                
+
+                //mudança de row
+                row += pieceSize
+                //reset da col
+                col = -pieceSize
+            }
+
+
+        }
+
+
+        rotate() {
+            if (this.placement == [
+                    [1, 1],
+                    [1, 1]
+                ]) {
+                //do loli sound
+            } else {
+                let neoPlacement = [[0, 0, 0],
+                    [1, 1, 1],
+                    [0, 1, 0]]
+                let k = this.placement.length - 1;
+                let l = k;
+
+                //escrever 1ª row como 3ª coluna e continuar, 2ª row como 2ª coluna, 3ª row como 1ª coluna
+                for (let i = 0; i < this.placement.length; i++) {
+
+                    for (let j = 0; j < this.placement[i].length; j++) {
+                        neoPlacement[k][l] = this.placement[i][j]
+                        l--
+                    }
+                    
+                    k--
+                    l = this.placement.length
+                }
+                this.placement = neoPlacement
+            }
+
         }
 
         update() {
@@ -215,8 +259,11 @@
             if (leftKey) {
                 tetronimo.x -= 40
             }
+            if (upKey) {
+                tetronimo.rotate();
+            }
 
-            tetronimo.createTetronimo()
+            tetronimo.createTetronimo();
             tetronimo.draw();
             tetronimo.update();
 
