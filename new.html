@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tétris</title>
+</head>
+
+<body>
+    <canvas id="tetrisCanvas" width="400px" height="920px" style="border:3px solid orange;">
+        Your Browser Doesn't Support This
+    </canvas>
+</body>
+
+<script>
+    const canvas = document.querySelector('#tetrisCanvas');
+    const ctx = canvas.getContext("2d");
+
+    let H = canvas.height
+    let W = canvas.width
+
+    let pieceSize = 40
+    let timer = 0
+
+    //Controls
+    let rightKey = false;
+    let leftKey = false;
+    let upKey = false;
+    let downKey = false;
+
+
+    class Tetronimos {
+
+        constructor() {
+            this.randomTetronimo = Math.floor(Math.random() * 7);
+            this.y = 0;
+            this.fallingMovement = 40
+            this.x = W / 2
+            this.moving = true
+        }
+        
+        update() {
+            timer++
+            if (timer == 10 && this.moving == true) {
+                this.y += this.fallingMovement
+                timer = 0
+            }
+
+        }
+    
+    }
+
+    let unit = 40;
+    function render() {
+        //clear canvas
+        ctx.fillStyle = "rgba(255, 255, 255)"
+        ctx.fillRect(0, 0, W, H)
+
+        //draw GRID
+        for (var x = 0; x < W; x += 40) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, H);
+        }
+
+        for (var y = 0; y < H; y += 40) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(W, y);
+        }
+
+        ctx.strokeStyle = "#FCE3BF";
+        ctx.stroke();
+
+
+        //handler for keydown
+        function ArrowPressed(e) {
+            if (e.key == 'ArrowRight') {
+                rightKey = true; //Canvas#2
+            }
+
+            if (e.key == 'ArrowLeft') {
+                leftKey = true; //Canvas#2
+            }
+
+            if (e.key == 'ArrowUp') {
+                upKey = true; //Canvas#2
+            }
+
+            if (e.key == 'ArrowDown') {
+                downKey = true; //Canvas#2
+            }
+        }
+
+        //handler for keyup
+        function ArrowReleased(e) {
+            if (e.key == 'ArrowRight') {
+                rightKey = false; //Canvas#2
+            }
+
+            if (e.key == 'ArrowLeft') {
+                leftKey = false; //Canvas#2
+            }
+
+            if (e.key == 'ArrowUp') {
+                upKey = false; //Canvas#2
+            }
+
+            if (e.key == 'ArrowDown') {
+                downKey = false; //Canvas#2
+            }
+        }
+
+        //sets handlers for events keydown & keyup
+        window.addEventListener('keydown', ArrowPressed);
+        window.addEventListener('keyup', ArrowReleased);
+    }
+
+    setInterval(render, 95);
+</script>
+</html>
