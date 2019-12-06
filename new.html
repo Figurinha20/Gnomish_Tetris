@@ -21,6 +21,9 @@
     let H = canvas.height
     let W = canvas.width
 
+    ctx.strokeStyle = "black"
+    ctx.lineWidth = "2"
+
     let pieceSize = 40
     let timer = 0
 
@@ -31,14 +34,82 @@
     let downKey = false;
 
 
-    class Tetronimos {
-
+    class Tetronimo {
         constructor() {
             this.randomTetronimo = Math.floor(Math.random() * 7);
             this.y = 0;
-            this.fallingMovement = 40
-            this.x = W / 2
-            this.moving = true
+            this.fallingMovement = 40;
+            this.x = W / 2;
+            this.moving = true;
+            this.placement = []
+        }
+
+        createTetronimo() {
+            switch (this.randomTetronimo) {
+                case 0:
+                    //Peça 4x4
+                    ctx.fillStyle = "#f6d009"
+                    this.placement = [1,1],
+                                     [1,1]
+                    break;
+
+                case 1:
+                    //Peça FINALLY
+                    ctx.fillStyle = "#199ce6"
+                    this.placement = [0,1,0,0],
+                                     [0,1,0,0],
+                                     [0,1,0,0],
+                                     [0,1,0,0]
+                    break;
+
+                case 2:
+                    //Peça S
+                    ctx.fillStyle = "#e91680"
+                    this.placement = [0,1,1],
+                                     [1,1,0],
+                                     [0,0,0]                                    
+                    break;
+
+                case 3:
+                    //Peça Z
+                    ctx.fillStyle = "#16e97f"
+                    this.placement = [1,1,0],
+                                     [0,1,1],
+                                     [0,0,0]
+                    break;
+                case 4:
+                    //Peça L
+                    ctx.fillStyle = "#E21D29"
+                    this.placement = [0,1,0],
+                                     [0,1,0],
+                                     [0,1,1]
+                    break;
+                case 5:
+                    //Peça J
+                    ctx.fillStyle = "#1DE2D6"
+                    this.placement = [0,1,0],
+                                     [0,1,0],
+                                     [1,1,0]
+                    break;
+                case 6:
+                    //Peça T
+                    ctx.fillStyle = "#A711EE"
+                    this.placement = [0,0,0],
+                                     [1,1,1],
+                                     [0,1,0]
+                    break;
+                default:
+                    alert("oi?")
+                    break;
+            }
+        }
+        draw(){
+            this.placement.forEach(piece=>{
+                if (piece==1){
+                    ctx.fillRect(this.x, this.y, pieceSize, pieceSize)
+                   ctx.strokeRect(this.x, this.y, pieceSize, pieceSize)
+                }
+            });
         }
         
         update() {
@@ -52,7 +123,9 @@
     
     }
 
-    let unit = 40;
+    let gameArray = new Array()
+    gameArray.push(new Tetronimo())
+
     function render() {
         //clear canvas
         ctx.fillStyle = "rgba(255, 255, 255)"
@@ -71,7 +144,6 @@
 
         ctx.strokeStyle = "#FCE3BF";
         ctx.stroke();
-
 
         //handler for keydown
         function ArrowPressed(e) {
@@ -114,6 +186,21 @@
         //sets handlers for events keydown & keyup
         window.addEventListener('keydown', ArrowPressed);
         window.addEventListener('keyup', ArrowReleased);
+
+        //draw & update
+        gameArray.forEach(function (tetronimo) {
+            if (rightKey==true){
+                tetronimo.x += 40
+            }
+            if (leftKey){
+                tetronimo.x -= 40
+            }
+
+            tetronimo.createTetronimo()
+            tetronimo.draw();
+            tetronimo.update();
+
+        });
     }
 
     setInterval(render, 95);
