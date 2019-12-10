@@ -156,29 +156,63 @@
                     [1, 1]
                 ]) {
                 //do loli sound
+            } else if (this.placement.length == 4) {
+
+                if (this.placement == [
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0]
+                    ]) {
+
+                    this.placement = [
+                        [0, 0, 0, 0],
+                        [1, 1, 1, 1],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0]
+                    ]
+
+                } else {
+                    this.placement = [
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0]
+                    ]
+
+                }
+
             } else {
                 let neoPlacement = [
-                    [0, 1, 0],
-                    [1, 1, 1],
-                    [0, 1, 0]
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0]
                 ]
+
                 let k = this.placement.length - 1;
                 let l = k;
-
                 //escrever 1ª row como 3ª coluna e continuar, 2ª row como 2ª coluna, 3ª row como 1ª coluna
                 for (let i = 0; i < this.placement.length; i++) {
-
                     for (let j = 0; j < this.placement[i].length; j++) {
                         neoPlacement[k][l] = this.placement[i][j]
                         l--
                     }
-
                     k--
                     l = this.placement.length - 1
                 }
                 this.placement = neoPlacement
+
+
+                console.log("old");
+                console.log(this.placement);
+
+                console.log("new");
+                console.log(neoPlacement);
+
+
+                this.placement = neoPlacement
             }
-            
+
         }
 
         update() {
@@ -230,12 +264,13 @@
             }
             if (upKey) {
                 tetronimo.rotate();
+                upKey = false;
             }
 
             //tetronimo.createTetronimo();
             tetronimo.draw();
             tetronimo.update();
-            console.log(tetronimo);
+
 
 
         });
@@ -255,13 +290,14 @@
             leftKey = true; //Canvas#2
         }
 
-        if (e.key == 'ArrowUp') {
+        if (e.key == 'ArrowUp' && e.repeat == false) {
             upKey = true; //Canvas#2
         }
 
         if (e.key == 'ArrowDown') {
             downKey = true; //Canvas#2
         }
+
     }
 
 
