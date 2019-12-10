@@ -42,13 +42,14 @@
             this.x = W / 2;
             this.moving = true;
             this.placement = []
+            this.color = "black"
         }
 
         createTetronimo() {
             switch (this.randomTetronimo) {
                 case 0:
                     //Peça 4x4
-                    ctx.fillStyle = "#f6d009"
+                    this.color = "#f6d009"
                     this.placement = [
                         [1, 1],
                         [1, 1]
@@ -57,7 +58,7 @@
 
                 case 1:
                     //Peça FINALLY
-                    ctx.fillStyle = "#199ce6"
+                    this.color = "#199ce6"
                     this.placement = [
                         [0, 1, 0, 0],
                         [0, 1, 0, 0],
@@ -68,7 +69,7 @@
 
                 case 2:
                     //Peça S
-                    ctx.fillStyle = "#e91680"
+                    this.color = "#e91680"
                     this.placement = [
                         [0, 1, 1],
                         [1, 1, 0],
@@ -78,7 +79,7 @@
 
                 case 3:
                     //Peça Z
-                    ctx.fillStyle = "#16e97f"
+                    this.color = "#16e97f"
                     this.placement = [
                         [1, 1, 0],
                         [0, 1, 1],
@@ -87,7 +88,7 @@
                     break;
                 case 4:
                     //Peça L
-                    ctx.fillStyle = "#E21D29"
+                    this.color = "#E21D29"
                     this.placement = [
                         [0, 1, 0],
                         [0, 1, 0],
@@ -96,7 +97,7 @@
                     break;
                 case 5:
                     //Peça J
-                    ctx.fillStyle = "#1DE2D6"
+                    this.color = "#1DE2D6"
                     this.placement = [
                         [0, 1, 0],
                         [0, 1, 0],
@@ -105,7 +106,7 @@
                     break;
                 case 6:
                     //Peça T
-                    ctx.fillStyle = "#A711EE"
+                    this.color = "#A711EE"
                     this.placement = [
                         [0, 0, 0],
                         [1, 1, 1],
@@ -117,8 +118,10 @@
                     break;
             }
         }
+
         draw() {
 
+            ctx.fillStyle = this.color
             //this.x & this.y é o centro do array bidimensional
             //variavel de incremento de this.y que varia com o i ou seja a row
             let row = -pieceSize;
@@ -154,9 +157,11 @@
                 ]) {
                 //do loli sound
             } else {
-                let neoPlacement = [[0, 0, 0],
+                let neoPlacement = [
+                    [0, 1, 0],
                     [1, 1, 1],
-                    [0, 1, 0]]
+                    [0, 1, 0]
+                ]
                 let k = this.placement.length - 1;
                 let l = k;
 
@@ -167,13 +172,13 @@
                         neoPlacement[k][l] = this.placement[i][j]
                         l--
                     }
-                    
+
                     k--
-                    l = this.placement.length
+                    l = this.placement.length - 1
                 }
                 this.placement = neoPlacement
             }
-
+            
         }
 
         update() {
@@ -189,6 +194,8 @@
 
     let gameArray = new Array()
     gameArray.push(new Tetronimo())
+    gameArray[gameArray.length - 1].createTetronimo();
+    console.log(gameArray[gameArray.length - 1])
 
     function render() {
         //clear canvas
@@ -209,44 +216,6 @@
         ctx.strokeStyle = "#FCE3BF";
         ctx.stroke();
 
-        //handler for keydown
-        function ArrowPressed(e) {
-            if (e.key == 'ArrowRight') {
-                rightKey = true; //Canvas#2
-            }
-
-            if (e.key == 'ArrowLeft') {
-                leftKey = true; //Canvas#2
-            }
-
-            if (e.key == 'ArrowUp') {
-                upKey = true; //Canvas#2
-            }
-
-            if (e.key == 'ArrowDown') {
-                downKey = true; //Canvas#2
-            }
-        }
-
-        //handler for keyup
-        function ArrowReleased(e) {
-            if (e.key == 'ArrowRight') {
-                rightKey = false; //Canvas#2
-            }
-
-            if (e.key == 'ArrowLeft') {
-                leftKey = false; //Canvas#2
-            }
-
-            if (e.key == 'ArrowUp') {
-                upKey = false; //Canvas#2
-            }
-
-            if (e.key == 'ArrowDown') {
-                downKey = false; //Canvas#2
-            }
-        }
-
         //sets handlers for events keydown & keyup
         window.addEventListener('keydown', ArrowPressed);
         window.addEventListener('keyup', ArrowReleased);
@@ -263,14 +232,57 @@
                 tetronimo.rotate();
             }
 
-            tetronimo.createTetronimo();
+            //tetronimo.createTetronimo();
             tetronimo.draw();
             tetronimo.update();
+            console.log(tetronimo);
+
 
         });
     }
 
     setInterval(render, 95);
+
+
+
+    //handler for keydown
+    function ArrowPressed(e) {
+        if (e.key == 'ArrowRight') {
+            rightKey = true; //Canvas#2
+        }
+
+        if (e.key == 'ArrowLeft') {
+            leftKey = true; //Canvas#2
+        }
+
+        if (e.key == 'ArrowUp') {
+            upKey = true; //Canvas#2
+        }
+
+        if (e.key == 'ArrowDown') {
+            downKey = true; //Canvas#2
+        }
+    }
+
+
+    //handler for keyup
+    function ArrowReleased(e) {
+        if (e.key == 'ArrowRight') {
+            rightKey = false; //Canvas#2
+        }
+
+        if (e.key == 'ArrowLeft') {
+            leftKey = false; //Canvas#2
+        }
+
+        if (e.key == 'ArrowUp') {
+            upKey = false; //Canvas#2
+        }
+
+        if (e.key == 'ArrowDown') {
+            downKey = false; //Canvas#2
+        }
+    }
 </script>
 
 </html>
