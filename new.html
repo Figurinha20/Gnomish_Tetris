@@ -31,6 +31,13 @@
     let leftKey = false;
     let upKey = false;
     let downKey = false;
+    
+    //variavel de incremento de this.y que varia com o i ou seja a row
+    let row = -pieceSize;
+    //a mesma coisa mas para o x a col
+    let col = -pieceSize;
+
+    timer = 0
 
 
     class Tetronimo {
@@ -43,7 +50,6 @@
             this.placement = []
             this.color = "black"
             this.rotation = 0
-            this.timer = 0
         }
 
         createTetronimo() {
@@ -124,10 +130,9 @@
 
             ctx.fillStyle = this.color
             //this.x & this.y é o centro do array bidimensional
-            //variavel de incremento de this.y que varia com o i ou seja a row
-            let row = -pieceSize;
-            //a mesma coisa mas para o x a col
-            let col = -pieceSize;
+
+            col = -pieceSize
+            row = -pieceSize
 
             for (let i = 0; i < this.placement.length; i++) {
 
@@ -146,8 +151,6 @@
                 //reset da col
                 col = -pieceSize
             }
-
-
         }
 
 
@@ -303,10 +306,9 @@
 
         update() {
             //this.x & this.y é o centro do array bidimensional
-            //variavel de incremento de this.y que varia com o i ou seja a row
-            let row = -pieceSize;
-            //a mesma coisa mas para o x a col
-            let col = -pieceSize;
+            
+            col = -pieceSize
+            row = -pieceSize
 
             for (let i = 0; i < this.placement.length; i++) {
 
@@ -338,12 +340,12 @@
 
 
             if(this.moving == true){
-                console.log(this.timer);
-                this.timer++
+                console.log(timer);
+                timer++
 
-                if (this.timer == 10) {
+                if (timer > 9) {
                 this.y += this.fallingMovement
-                this.timer = 0
+                timer = 0
             }
             }
             
