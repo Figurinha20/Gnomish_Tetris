@@ -43,6 +43,7 @@
             this.moving = true;
             this.placement = []
             this.color = "black"
+            this.rotation = 0
         }
 
         createTetronimo() {
@@ -151,69 +152,172 @@
 
 
         rotate() {
-            if (this.placement == [
-                    [1, 1],
-                    [1, 1]
-                ]) {
-                //do loli sound
-            } else if (this.placement.length == 4) {
-
-                if (this.placement == [
-                        [0, 1, 0, 0],
-                        [0, 1, 0, 0],
-                        [0, 1, 0, 0],
-                        [0, 1, 0, 0]
-                    ]) {
-
+            //vou rodar as cenas à la pate
+            if (this.color == "#f6d009"){
+                //Do absolutely nothing, it's the square piece
+            }
+            else if (this.color == "#199ce6"){
+                if (this.rotation == 0){
                     this.placement = [
                         [0, 0, 0, 0],
                         [1, 1, 1, 1],
                         [0, 0, 0, 0],
                         [0, 0, 0, 0]
-                    ]
-
-                } else {
+                    ]                    
+                    this.rotation++
+                }
+                else if (this.rotation == 1){
                     this.placement = [
                         [0, 1, 0, 0],
                         [0, 1, 0, 0],
                         [0, 1, 0, 0],
                         [0, 1, 0, 0]
                     ]
-
+                    this.rotation = 0
                 }
 
-            } else {
-                let neoPlacement = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0]
-                ]
-
-                let k = this.placement.length - 1;
-                let l = k;
-                //escrever 1ª row como 3ª coluna e continuar, 2ª row como 2ª coluna, 3ª row como 1ª coluna
-                for (let i = 0; i < this.placement.length; i++) {
-                    for (let j = 0; j < this.placement[i].length; j++) {
-                        neoPlacement[k][l] = this.placement[i][j]
-                        l--
-                    }
-                    k--
-                    l = this.placement.length - 1
-                }
-                this.placement = neoPlacement
-
-
-                console.log("old");
-                console.log(this.placement);
-
-                console.log("new");
-                console.log(neoPlacement);
-
-
-                this.placement = neoPlacement
             }
-
+            else if (this.color == "#e91680"){
+                if (this.rotation == 0){
+                    this.placement = [
+                        [0, 1, 0],
+                        [0, 1, 1],
+                        [0, 0, 1]
+                    ]    
+                    this.rotation++
+                }
+                else if (this.rotation == 1){
+                    this.placement = [
+                        [0, 1, 1],
+                        [1, 1, 0],
+                        [0, 0, 0]
+                    ]
+                    this.rotation = 0
+                }               
+            }
+            else if (this.color == "#16e97f"){
+                if (this.rotation == 0){
+                    this.placement = [
+                        [0, 1, 0],
+                        [1, 1, 0],
+                        [1, 0, 0]
+                    ]    
+                    this.rotation++
+                }
+                else if (this.rotation == 1){
+                    this.placement = [
+                        [1, 1, 0],
+                        [0, 1, 1],
+                        [0, 0, 0]
+                    ]
+                    this.rotation = 0
+                }               
+                
+            }
+            else if (this.color == "#E21D29"){
+                if (this.rotation == 0){
+                    this.placement = [
+                        [0, 0, 0],
+                        [1, 1, 1],
+                        [1, 0, 0]
+                    ]    
+                    this.rotation++
+                }
+                else if (this.rotation == 1){
+                    this.placement = [
+                        [1, 1, 0],
+                        [0, 1, 0],
+                        [0, 1, 0]
+                    ]
+                    this.rotation++
+                }
+                else if (this.rotation == 2){
+                    this.placement = [
+                        [0, 0, 1],
+                        [1, 1, 1],
+                        [0, 0, 0]
+                    ]          
+                    this.rotation++
+                }
+                else if (this.rotation == 3){
+                    this.placement = [
+                        [0, 1, 0],
+                        [0, 1, 0],
+                        [0, 1, 1]
+                    ]
+                    this.rotation = 0
+                }     
+            }
+            else if (this.color == "#1DE2D6"){
+                if (this.rotation == 0){
+                    this.placement = [
+                        [1, 0, 0],
+                        [1, 1, 1],
+                        [0, 0, 0]
+                    ]    
+                    this.rotation++
+                }
+                else if (this.rotation == 1){
+                    this.placement = [
+                        [0, 1, 1],
+                        [0, 1, 0],
+                        [0, 1, 0]
+                    ]
+                    this.rotation++
+                }
+                else if (this.rotation == 2){
+                    this.placement = [
+                        [0, 0, 0],
+                        [1, 1, 1],
+                        [0, 0, 1]
+                    ]          
+                    this.rotation++
+                }
+                else if (this.rotation == 3){
+                    this.placement = [
+                        [0, 1, 0],
+                        [0, 1, 0],
+                        [1, 1, 0]
+                    ]
+                    this.rotation = 0
+                }     
+            }
+            else if (this.color == "#A711EE"){
+                if (this.rotation == 0){
+                    this.placement = [
+                        [0, 1, 0],
+                        [0, 1, 1],
+                        [0, 1, 0]
+                    ]    
+                    this.rotation++
+                }
+                else if (this.rotation == 1){
+                    this.placement = [
+                        [0, 0, 0],
+                        [1, 1, 1],
+                        [0, 1, 0]
+                    ]
+                    this.rotation++
+                }
+                else if (this.rotation == 2){
+                    this.placement = [
+                        [0, 1, 0],
+                        [1, 1, 0],
+                        [0, 1, 0]
+                    ]          
+                    this.rotation++
+                }
+                else if (this.rotation == 3){
+                    this.placement = [
+                        [0, 1, 0],
+                        [1, 1, 1],
+                        [0, 0, 0]
+                    ]
+                    this.rotation = 0
+                }  
+            }        
         }
+
 
         update() {
             timer++
