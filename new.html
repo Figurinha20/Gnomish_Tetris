@@ -320,6 +320,44 @@
 
 
         update() {
+            //this.x & this.y é o centro do array bidimensional
+            //variavel de incremento de this.y que varia com o i ou seja a row
+            let row = -pieceSize;
+            //a mesma coisa mas para o x a col
+            let col = -pieceSize;
+
+            for (let i = 0; i < this.placement.length; i++) {
+
+                for (let j = 0; j < this.placement[i].length; j++) {
+                    //check if draw
+                    if (this.placement[i][j] == 1) {
+                        if(this.x + col < 0 ){
+                            this.x += pieceSize
+                        } 
+                        if(this.x + col >= W){
+                            this.x -= pieceSize
+                        }
+                        
+                        if(this.y + row > H-pieceSize ){
+                            this.y -= pieceSize;
+                            this.moving = false;
+
+                            gameArray.push(new Tetronimo)
+                        } 
+
+                    }
+                    //mudança de col
+                    col += pieceSize
+                }
+
+                //mudança de row
+                row += pieceSize
+                //reset da col
+                col = -pieceSize
+            }
+            
+
+            
             timer++
             if (timer == 10 && this.moving == true) {
                 this.y += this.fallingMovement
@@ -360,20 +398,21 @@
 
         //draw & update
         gameArray.forEach(function (tetronimo) {
-            if (rightKey == true) {
+            if (rightKey == true && tetronimo.moving) {
                 tetronimo.x += 40
             }
-            if (leftKey) {
+            if (leftKey  && tetronimo.moving) {
                 tetronimo.x -= 40
             }
-            if (upKey) {
+            if (upKey && tetronimo.moving) {
                 tetronimo.rotate();
                 upKey = false;
             }
 
             //tetronimo.createTetronimo();
-            tetronimo.draw();
             tetronimo.update();
+            tetronimo.draw();
+            
 
 
 
