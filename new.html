@@ -25,7 +25,6 @@
     ctx.lineWidth = "2"
 
     let pieceSize = 40
-    let timer = 0
 
     //Controls
     let rightKey = false;
@@ -44,6 +43,7 @@
             this.placement = []
             this.color = "black"
             this.rotation = 0
+            this.timer = 0
         }
 
         createTetronimo() {
@@ -153,20 +153,18 @@
 
         rotate() {
             //vou rodar as cenas à la pate
-            if (this.color == "#f6d009"){
+            if (this.color == "#f6d009") {
                 //Do absolutely nothing, it's the square piece
-            }
-            else if (this.color == "#199ce6"){
-                if (this.rotation == 0){
+            } else if (this.color == "#199ce6") {
+                if (this.rotation == 0) {
                     this.placement = [
                         [0, 0, 0, 0],
                         [1, 1, 1, 1],
                         [0, 0, 0, 0],
                         [0, 0, 0, 0]
-                    ]                    
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 1){
+                } else if (this.rotation == 1) {
                     this.placement = [
                         [0, 1, 0, 0],
                         [0, 1, 0, 0],
@@ -176,146 +174,130 @@
                     this.rotation = 0
                 }
 
-            }
-            else if (this.color == "#e91680"){
-                if (this.rotation == 0){
+            } else if (this.color == "#e91680") {
+                if (this.rotation == 0) {
                     this.placement = [
                         [0, 1, 0],
                         [0, 1, 1],
                         [0, 0, 1]
-                    ]    
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 1){
+                } else if (this.rotation == 1) {
                     this.placement = [
                         [0, 1, 1],
                         [1, 1, 0],
                         [0, 0, 0]
                     ]
                     this.rotation = 0
-                }               
-            }
-            else if (this.color == "#16e97f"){
-                if (this.rotation == 0){
+                }
+            } else if (this.color == "#16e97f") {
+                if (this.rotation == 0) {
                     this.placement = [
                         [0, 1, 0],
                         [1, 1, 0],
                         [1, 0, 0]
-                    ]    
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 1){
+                } else if (this.rotation == 1) {
                     this.placement = [
                         [1, 1, 0],
                         [0, 1, 1],
                         [0, 0, 0]
                     ]
                     this.rotation = 0
-                }               
-                
-            }
-            else if (this.color == "#E21D29"){
-                if (this.rotation == 0){
+                }
+
+            } else if (this.color == "#E21D29") {
+                if (this.rotation == 0) {
                     this.placement = [
                         [0, 0, 0],
                         [1, 1, 1],
                         [1, 0, 0]
-                    ]    
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 1){
+                } else if (this.rotation == 1) {
                     this.placement = [
                         [1, 1, 0],
                         [0, 1, 0],
                         [0, 1, 0]
                     ]
                     this.rotation++
-                }
-                else if (this.rotation == 2){
+                } else if (this.rotation == 2) {
                     this.placement = [
                         [0, 0, 1],
                         [1, 1, 1],
                         [0, 0, 0]
-                    ]          
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 3){
+                } else if (this.rotation == 3) {
                     this.placement = [
                         [0, 1, 0],
                         [0, 1, 0],
                         [0, 1, 1]
                     ]
                     this.rotation = 0
-                }     
-            }
-            else if (this.color == "#1DE2D6"){
-                if (this.rotation == 0){
+                }
+            } else if (this.color == "#1DE2D6") {
+                if (this.rotation == 0) {
                     this.placement = [
                         [1, 0, 0],
                         [1, 1, 1],
                         [0, 0, 0]
-                    ]    
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 1){
+                } else if (this.rotation == 1) {
                     this.placement = [
                         [0, 1, 1],
                         [0, 1, 0],
                         [0, 1, 0]
                     ]
                     this.rotation++
-                }
-                else if (this.rotation == 2){
+                } else if (this.rotation == 2) {
                     this.placement = [
                         [0, 0, 0],
                         [1, 1, 1],
                         [0, 0, 1]
-                    ]          
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 3){
+                } else if (this.rotation == 3) {
                     this.placement = [
                         [0, 1, 0],
                         [0, 1, 0],
                         [1, 1, 0]
                     ]
                     this.rotation = 0
-                }     
-            }
-            else if (this.color == "#A711EE"){
-                if (this.rotation == 0){
+                }
+            } else if (this.color == "#A711EE") {
+                if (this.rotation == 0) {
                     this.placement = [
                         [0, 1, 0],
                         [0, 1, 1],
                         [0, 1, 0]
-                    ]    
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 1){
+                } else if (this.rotation == 1) {
                     this.placement = [
                         [0, 0, 0],
                         [1, 1, 1],
                         [0, 1, 0]
                     ]
                     this.rotation++
-                }
-                else if (this.rotation == 2){
+                } else if (this.rotation == 2) {
                     this.placement = [
                         [0, 1, 0],
                         [1, 1, 0],
                         [0, 1, 0]
-                    ]          
+                    ]
                     this.rotation++
-                }
-                else if (this.rotation == 3){
+                } else if (this.rotation == 3) {
                     this.placement = [
                         [0, 1, 0],
                         [1, 1, 1],
                         [0, 0, 0]
                     ]
                     this.rotation = 0
-                }  
-            }        
+                }
+            }
         }
 
 
@@ -331,19 +313,17 @@
                 for (let j = 0; j < this.placement[i].length; j++) {
                     //check if draw
                     if (this.placement[i][j] == 1) {
-                        if(this.x + col < 0 ){
+                        if (this.x + col < 0) {
                             this.x += pieceSize
-                        } 
-                        if(this.x + col >= W){
+                        }
+                        if (this.x + col >= W) {
                             this.x -= pieceSize
                         }
-                        
-                        if(this.y + row > H-pieceSize ){
-                            this.y -= pieceSize;
-                            this.moving = false;
 
-                            gameArray.push(new Tetronimo)
-                        } 
+                        if (this.y + row > H - pieceSize) {
+                            this.moving = false;
+                            this.y -= pieceSize;
+                        }
 
                     }
                     //mudança de col
@@ -355,14 +335,18 @@
                 //reset da col
                 col = -pieceSize
             }
-            
 
-            
-            timer++
-            if (timer == 10 && this.moving == true) {
+console.log(this.timer);
+            if(this.moving == true){
+                this.timer++
+
+                if (this.timer == 10) {
                 this.y += this.fallingMovement
-                timer = 0
+                this.timer = 0
             }
+            }
+            
+            
 
         }
 
@@ -398,10 +382,11 @@
 
         //draw & update
         gameArray.forEach(function (tetronimo) {
+
             if (rightKey == true && tetronimo.moving) {
                 tetronimo.x += 40
             }
-            if (leftKey  && tetronimo.moving) {
+            if (leftKey && tetronimo.moving) {
                 tetronimo.x -= 40
             }
             if (upKey && tetronimo.moving) {
@@ -412,11 +397,16 @@
             //tetronimo.createTetronimo();
             tetronimo.update();
             tetronimo.draw();
-            
-
-
-
         });
+
+
+        
+        if (gameArray[gameArray.length - 1].moving == false) {
+            gameArray.push(new Tetronimo())
+            gameArray[gameArray.length - 1].createTetronimo();
+            console.log(gameArray[gameArray.length - 1].moving)
+        }
+
     }
 
     setInterval(render, 95);
