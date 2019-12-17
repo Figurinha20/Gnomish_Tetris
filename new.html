@@ -31,13 +31,13 @@
     let leftKey = false;
     let upKey = false;
     let downKey = false;
-    
+
     //variavel de incremento de this.y que varia com o i ou seja a row
     let row = -pieceSize;
     //a mesma coisa mas para o x a col
     let col = -pieceSize;
 
-    timer = 0
+    let timer = 0
 
 
     class Tetronimo {
@@ -305,8 +305,51 @@
 
 
         update() {
+            //se este for o tetronimo no fim do GameArray
+            if (gameArray[gameArray.length - 1] == this) {
+
+
+                for (let helpmeiwant2die = 0; helpmeiwant2die < gameArray.length-1; helpmeiwant2die++) {
+
+                    col = -pieceSize
+                    row = -pieceSize
+
+                    for (let i = 0; i < gameArray[helpmeiwant2die].placement.length; i++) {
+
+                        for (let j = 0; j < gameArray[helpmeiwant2die].placement[i].length; j++) {
+                            //check if draw
+                            if (gameArray[helpmeiwant2die].placement[i][j] == 1 && this.placement[i][j] == 1) {
+                                if (leftKey) {
+                                    this.x += pieceSize
+                                }
+                                if (rightKey) {
+                                    this.x -= pieceSize
+                                }
+                                /*
+                                if (this.y + row == H - pieceSize) {
+                                    this.moving = false;
+                                    this.y -= pieceSize;
+                                }
+                                */
+                            }
+                            //mudança de col
+                            col += pieceSize
+                        }
+
+                        //mudança de row
+                        row += pieceSize
+                        //reset da col
+                        col = -pieceSize
+                    }
+
+
+                
+                    
+                }
+               
+            }
             //this.x & this.y é o centro do array bidimensional
-            
+
             col = -pieceSize
             row = -pieceSize
 
@@ -339,17 +382,16 @@
             }
 
 
-            if(this.moving == true){
-                console.log(timer); //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH
+            if (this.moving == true) {
                 timer++
 
                 if (timer > 9) {
-                this.y += this.fallingMovement
-                timer = 0
+                    this.y += this.fallingMovement
+                    timer = 0
+                }
             }
-            }
-            
-            
+
+
 
         }
 
@@ -358,7 +400,7 @@
     let gameArray = new Array()
     gameArray.push(new Tetronimo())
     gameArray[gameArray.length - 1].createTetronimo();
-    console.log(gameArray[gameArray.length - 1])
+
 
     function render() {
         //clear canvas
@@ -396,6 +438,9 @@
                 tetronimo.rotate();
                 upKey = false;
             }
+            if (downKey && tetronimo.moving) {
+                tetronimo.y += 40;
+            }
 
             //tetronimo.createTetronimo();
             tetronimo.update();
@@ -403,7 +448,7 @@
         });
 
 
-        
+
         if (gameArray[gameArray.length - 1].moving == false) {
             gameArray.push(new Tetronimo())
             gameArray[gameArray.length - 1].createTetronimo();
