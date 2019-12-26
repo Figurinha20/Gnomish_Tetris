@@ -43,7 +43,7 @@
     class Tetronimo {
         constructor() {
             this.randomTetronimo = Math.floor(Math.random() * 7);
-            this.y = 0;
+            this.y = pieceSize;
             this.fallingMovement = 40;
             this.x = W / 2;
             this.moving = true;
@@ -305,49 +305,6 @@
 
 
         update() {
-            //se este for o tetronimo no fim do GameArray
-            if (gameArray[gameArray.length - 1] == this) {
-
-
-                for (let helpmeiwant2die = 0; helpmeiwant2die < gameArray.length-1; helpmeiwant2die++) {
-
-                    col = -pieceSize
-                    row = -pieceSize
-
-                    for (let i = 0; i < gameArray[helpmeiwant2die].placement.length; i++) {
-
-                        for (let j = 0; j < gameArray[helpmeiwant2die].placement[i].length; j++) {
-                            //check if draw
-                            if (gameArray[helpmeiwant2die].placement[i][j] == 1 && this.placement[i][j] == 1) {
-                                if (leftKey) {
-                                    this.x += pieceSize
-                                }
-                                if (rightKey) {
-                                    this.x -= pieceSize
-                                }
-                                /*
-                                if (this.y + row == H - pieceSize) {
-                                    this.moving = false;
-                                    this.y -= pieceSize;
-                                }
-                                */
-                            }
-                            //mudança de col
-                            col += pieceSize
-                        }
-
-                        //mudança de row
-                        row += pieceSize
-                        //reset da col
-                        col = -pieceSize
-                    }
-
-
-                
-                    
-                }
-               
-            }
             //this.x & this.y é o centro do array bidimensional
 
             col = -pieceSize
@@ -356,7 +313,7 @@
             for (let i = 0; i < this.placement.length; i++) {
 
                 for (let j = 0; j < this.placement[i].length; j++) {
-                    //check if draw
+                    //COLISOES COM LIMITES DO CANVAS
                     if (this.placement[i][j] == 1) {
                         if (this.x + col < 0) {
                             this.x += pieceSize
@@ -365,21 +322,79 @@
                             this.x -= pieceSize
                         }
 
+                        //try to fix jitter
                         if (this.y + row > H - pieceSize) {
-                            this.moving = false;
                             this.y -= pieceSize;
+                            this.moving = false;
+                            break;
                         }
 
                     }
+
                     //mudança de col
                     col += pieceSize
                 }
-
+                if (this.moving == false) {
+                    break;
+                }
                 //mudança de row
                 row += pieceSize
                 //reset da col
                 col = -pieceSize
             }
+
+
+
+            col = -pieceSize
+            row = -pieceSize
+
+            for (let i = 0; i < this.placement.length; i++) {
+
+                for (let j = 0; j < this.placement[i].length; j++) {
+                    //COLISOES COM PEÇAS (Y)
+                    if (this.placement[i][j] == 1) {
+                        let pixel = ctx.getImageData(this.x + col + 20, this.y + row + 20, 1, 1)
+                        //pixel.data[0] = R , [1] = G , [2] B , [3] opacity
+                        //RGB != 255 255 255
+                        //252
+
+
+                        //COLISOES COM PEÇAS (X)
+                        if (leftKey && (pixel.data[0] != 255 || pixel.data[0] != 255 || pixel.data[0] != 255)) {
+                            this.x += pieceSize
+                        }
+
+                        if (rightKey && (pixel.data[0] != 255 || pixel.data[0] != 255 || pixel.data[0] != 255)) {
+                            this.x -= pieceSize
+                        }
+
+
+                        if (pixel.data[0] != 255 || pixel.data[0] != 255 || pixel.data[0] != 255) {
+                            this.y -= pieceSize;
+                            this.moving = false;
+                            break;
+                        }
+
+
+                    }
+
+
+
+                    //mudança de col
+                    col += pieceSize
+                }
+                if (this.moving == false) {
+                    break;
+                }
+                //mudança de row
+                row += pieceSize
+                //reset da col
+                col = -pieceSize
+            }
+
+
+
+
 
 
             if (this.moving == true) {
@@ -402,6 +417,11 @@
     gameArray[gameArray.length - 1].createTetronimo();
 
 
+
+    //sets handlers for events keydown & keyup
+    window.addEventListener('keydown', ArrowPressed);
+    window.addEventListener('keyup', ArrowReleased);
+
     function render() {
         //clear canvas
         ctx.fillStyle = "rgba(255, 255, 255)"
@@ -421,38 +441,33 @@
         ctx.strokeStyle = "#FCE3BF";
         ctx.stroke();
 
-        //sets handlers for events keydown & keyup
-        window.addEventListener('keydown', ArrowPressed);
-        window.addEventListener('keyup', ArrowReleased);
+        for (let i = 0; i < gameArray.length - 1; i++) {
+            gameArray[i].draw();
+        }
 
         //draw & update
-        gameArray.forEach(function (tetronimo) {
-
-            if (rightKey == true && tetronimo.moving) {
-                tetronimo.x += 40
-            }
-            if (leftKey && tetronimo.moving) {
-                tetronimo.x -= 40
-            }
-            if (upKey && tetronimo.moving) {
-                tetronimo.rotate();
-                upKey = false;
-            }
-            if (downKey && tetronimo.moving) {
-                tetronimo.y += 40;
-            }
-
-            //tetronimo.createTetronimo();
-            tetronimo.update();
-            tetronimo.draw();
-        });
+        let lastTetronimo = gameArray[gameArray.length - 1];
+        if (rightKey == true && lastTetronimo.moving) {
+            lastTetronimo.x += 40
+        }
+        if (leftKey && lastTetronimo.moving) {
+            lastTetronimo.x -= 40
+        }
+        if (upKey && lastTetronimo.moving) {
+            lastTetronimo.rotate();
+            upKey = false;
+        }
+        if (downKey && lastTetronimo.moving) {
+            lastTetronimo.y += 40;
+        }
+        lastTetronimo.update();
+        lastTetronimo.draw();
 
 
-
-        if (gameArray[gameArray.length - 1].moving == false) {
+        if (lastTetronimo.moving == false) {
             gameArray.push(new Tetronimo())
             gameArray[gameArray.length - 1].createTetronimo();
-            console.log(gameArray[gameArray.length - 1].moving)
+          
         }
 
     }
