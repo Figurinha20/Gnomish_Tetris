@@ -1,7 +1,6 @@
-Arrow Left - Move Left
+﻿Arrow Left - Move Left
 Arrow Right - Move Right
 Arrow Up - Rotate
-Space - Slam
 
 Cada Quadrado tem 40px de lado, isto dá 10 quadrados por linha e 20 linhas
 

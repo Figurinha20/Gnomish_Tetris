@@ -9,9 +9,13 @@
 </head>
 
 <body>
-    <canvas id="tetrisCanvas" width="400px" height="920px" style="border:3px solid orange;">
+    <div class="container">     
+        <canvas id="tetrisCanvas" width="400px" height="920px" style="border:3px solid orange;">
         Your Browser Doesn't Support This
-    </canvas>
+        </canvas>
+        <h1 id="scoreMessage" style="position: absolute; left: 18px; top: -8px; color: orange;">Score:0</h1>
+        <h1 id="finalMessage" style="position: absolute; left: 460px; top: 100px; color: orange;"></h1>
+    </div>
 </body>
 
 <script>
@@ -39,6 +43,8 @@
 
     let timer = 0
 
+    let runGame = true
+    let score = 0
 
     class Tetronimo {
         constructor() {
@@ -326,6 +332,8 @@
                         if (this.y + row > H - pieceSize) {
                             this.y -= pieceSize;
                             this.moving = false;
+                            score = score + 40
+                            document.getElementById("scoreMessage").innerHTML = "Score:" + score
                             break;
                         }
 
@@ -372,6 +380,8 @@
                         if (pixel.data[0] != 255 || pixel.data[0] != 255 || pixel.data[0] != 255) {
                             this.y -= pieceSize;
                             this.moving = false;
+                            score = score + 40
+                            document.getElementById("scoreMessage").innerHTML = "Score:" + score                            
                             break;
                         }
 
@@ -449,9 +459,11 @@
         let lastTetronimo = gameArray[gameArray.length - 1];
         if (rightKey == true && lastTetronimo.moving) {
             lastTetronimo.x += 40
+
         }
         if (leftKey && lastTetronimo.moving) {
             lastTetronimo.x -= 40
+
         }
         if (upKey && lastTetronimo.moving) {
             lastTetronimo.rotate();
@@ -459,20 +471,33 @@
         }
         if (downKey && lastTetronimo.moving) {
             lastTetronimo.y += 40;
+            downKey = false
         }
         lastTetronimo.update();
         lastTetronimo.draw();
 
-
         if (lastTetronimo.moving == false) {
             gameArray.push(new Tetronimo())
-            gameArray[gameArray.length - 1].createTetronimo();
-          
+            gameArray[gameArray.length - 1].createTetronimo();         
+        }
+
+        //terminar o jogo
+        if (lastTetronimo.moving == false && lastTetronimo.y - 40 <= 0){
+            runGame = false
+        }
+
+        if (runGame==false){
+            clearInterval(game)
+            document.getElementById("finalMessage").innerHTML = "Thanks for Playing | Your Score:" + score
         }
 
     }
 
-    setInterval(render, 95);
+
+    let game = setInterval(render, 95);
+    
+
+
 
 
 
