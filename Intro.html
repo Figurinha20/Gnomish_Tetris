@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Intro Tetris</title>
+    <style>
+
+
+ @keyframes tetris {
+    0% {
+      transform: translate(100px,-350px) ;
+      
+    }
+    3% {
+      transform: translate(100px,-350px);
+    }
+    3.5% {
+      transform: translate(100px,-300px);
+    }
+    6% {
+      transform: translate(100px,-300px);
+    }
+    6.5% {
+      transform: translate(100px,-250px);
+    }
+    9%{
+        transform: translate(100px,-250px);
+    }
+    9.5%{
+        transform: translate(100px,-200px);
+    }
+    12%{
+        transform: translate(100px,-200px);
+    }
+
+    12.5% {
+      transform :translate(100px,-150px);
+    }
+    15% {
+      transform: translate(100px,-150px);
+    }
+    15.5% {
+      transform: translate(100px,-100px);
+    }
+    18% {
+      transform: translate(100px,-100px);
+    }
+    18.5% {
+      transform: translate(100px,-50px);
+    }
+    21% {
+      transform: translate(100px,-50px);
+    }
+    21.5%{
+        transform: translate(100px,0px);
+    }
+    24%{
+        transform: translate(100px,0px);
+    }
+    24.5%{
+        transform: translate(100px,50px);
+    }
+
+    27% {
+      transform :translate(100px,50px);
+    }
+    27.5% {
+      transform: translate(100px,100px);
+    }
+    30% {
+      transform: translate(100px,100px);
+    }
+    30.5% {
+      transform: translate(100px,150px);
+    }
+    33% {
+      transform: translate(100px,150px);
+    }
+    33.5% {
+      transform: translate(100px,200px);
+    }
+    36%{
+        transform: translate(100px,200px);
+    }
+    36.5%{
+        transform: translate(100px,250px);
+    }
+    39%{
+        transform: translate(100px,250px);
+    }
+
+    39.5% {
+      transform :translate(100px,300px);
+    }
+    100% {
+      transform :translate(100px,300px);
+      
+    }
+
+
+  }
+  @keyframes etris {
+    0% {
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    3% {
+      transform: translate(100px,-450px);
+    }
+    3.5% {
+      transform: translate(100px,-400px);
+    }
+    6% {
+      transform: translate(100px,-400px);
+    }
+    6.5% {
+      transform: translate(100px,-350px);
+    }
+    9%{
+        transform: translate(100px,-350px);
+    }
+    9.5%{
+        transform: translate(100px,-300px);
+    }
+    12%{
+        transform: translate(100px,-300px);
+    }
+
+    12.5% {
+      transform :translate(100px,-250px);
+    }
+    15% {
+      transform: translate(100px,-250px);
+    }
+    15.5% {
+      transform: translate(100px,-200px);
+    }
+    18% {
+      transform: translate(100px,-200px);
+    }
+    18.5% {
+      transform: translate(100px,-150px);
+    }
+    21% {
+      transform: translate(100px,-150px);
+    }
+    21.5%{
+        transform: translate(100px,-107px);
+    }
+    24%{
+        transform: translate(100px,-107px);
+    }
+    24.5%{
+        transform: translate(150px,-107px);
+    }
+    25%{
+        transform: translate(150px,-107px);
+    }
+    25.5%{
+        transform: translate(227px,-107px);
+    }
+
+    27% {
+      transform :translate(227px,-50px);
+    }
+    27.5% {
+      transform: translate(227px,0px);
+    }
+    30% {
+      transform: translate(227px,0px);
+    }
+    30.5% {
+      transform: translate(227px,50px);
+    }
+    33% {
+      transform: translate(227px,50px);
+    }
+    33.5% {
+      transform: translate(227px,100px);
+    }
+    36%{
+        transform: translate(227px,100px);
+    }
+    36.5%{
+        transform: translate(227px,150px);
+    }
+    39%{
+        transform: translate(227px,150px);
+    }
+
+    39.5% {
+      transform :translate(227px,200px);
+    }
+    42%{
+        transform:translate(227px,200px);
+    }
+    42.5%{
+        transform:translate(227px,250px);
+    }
+    45%{
+        transform: translate(227px,250px);
+    }
+    45.5%{
+        transform: translate(220px,300px);
+    }
+    46%{
+        transform: translate(220px,300px);
+    }
+    46.5%{
+        transform: translate(153px,300px);
+    }
+    47%{
+        transform :translate(153px,300px);
+      opacity: 100;
+    }
+    47.5%{
+        transform :translate(100px,300px);
+      opacity: 100;
+    }
+    100% {
+      transform :translate(100px,300px);
+      opacity: 100;
+    }
+  }
+  @keyframes tris {
+    0% {
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    3% {
+      transform: translate(100px,-450px);
+    }
+    3.5% {
+      transform: translate(100px,-400px);
+    }
+    6% {
+      transform: translate(100px,-400px);
+    }
+    6.5% {
+      transform: translate(100px,-350px);
+    }
+    9%{
+        transform: translate(100px,-350px);
+    }
+    9.5%{
+        transform: translate(100px,-300px);
+    }
+    12%{
+        transform: translate(100px,-300px);
+    }
+
+    12.5% {
+      transform :translate(100px,-250px);
+    }
+    15% {
+      transform: translate(100px,-250px);
+    }
+    15.5% {
+      transform: translate(100px,-200px);
+    }
+    18% {
+      transform: translate(100px,-200px);
+    }
+    18.5% {
+      transform: translate(100px,-150px);
+    }
+    21% {
+      transform: translate(100px,-150px);
+    }
+    21.5%{
+        transform: translate(100px,-100px);
+    }
+    24%{
+        transform: translate(100px,-100px);
+    }
+    24.5%{
+        transform: translate(150px,-100px);
+    }
+    25%{
+        transform: translate(150px,-100px);
+    }
+    25.5%{
+        transform: translate(227px,-100px);
+    }
+
+    27% {
+      transform :translate(227px,-50px);
+    }
+    27.5% {
+      transform: translate(227px,0px);
+    }
+    30% {
+      transform: translate(227px,0px);
+    }
+    30.5% {
+      transform: translate(227px,50px);
+    }
+    33% {
+      transform: translate(227px,50px);
+    }
+    33.5% {
+      transform: translate(227px,100px);
+    }
+    36%{
+        transform: translate(227px,100px);
+    }
+    36.5%{
+        transform: translate(227px,150px);
+    }
+    39%{
+        transform: translate(227px,150px);
+    }
+
+    39.5% {
+      transform :translate(227px,200px);
+    }
+    42%{
+        transform:translate(227px,200px);
+    }
+    42.5%{
+        transform:translate(227px,250px);
+    }
+    45%{
+        transform: translate(227px,250px);
+    }
+    45.5%{
+        transform: translate(220px,300px);
+    }
+    46%{
+        transform: translate(220px,300px);
+    }
+    46.5%{
+        transform: translate(153px,300px);
+    }
+    47%{
+        transform :translate(153px,300px);
+      opacity: 100;
+    }
+    47.5%{
+        transform :translate(100px,300px);
+      opacity: 100;
+    }
+    100% {
+      transform :translate(100px,300px);
+      opacity: 100;
+    }
+  }
+  @keyframes ris {
+    0% {
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    3% {
+      transform: translate(100px,-450px);
+    }
+    3.5% {
+      transform: translate(100px,-400px);
+    }
+    6% {
+      transform: translate(100px,-400px);
+    }
+    6.5% {
+      transform: translate(100px,-350px);
+    }
+    9%{
+        transform: translate(100px,-350px);
+    }
+    9.5%{
+        transform: translate(100px,-300px);
+    }
+    12%{
+        transform: translate(100px,-300px);
+    }
+
+    12.5% {
+      transform :translate(100px,-250px);
+    }
+    15% {
+      transform: translate(100px,-250px);
+    }
+    15.5% {
+      transform: translate(100px,-200px);
+    }
+    18% {
+      transform: translate(100px,-200px);
+    }
+    18.5% {
+      transform: translate(100px,-150px);
+    }
+    21% {
+      transform: translate(100px,-150px);
+    }
+    21.5%{
+        transform: translate(100px,-100px);
+    }
+    24%{
+        transform: translate(100px,-100px);
+    }
+    24.5%{
+        transform: translate(150px,-100px);
+    }
+    25%{
+        transform: translate(150px,-100px);
+    }
+    25.5%{
+        transform: translate(227px,-100px);
+    }
+
+    27% {
+      transform :translate(227px,-50px);
+    }
+    27.5% {
+      transform: translate(227px,0px);
+    }
+    30% {
+      transform: translate(227px,0px);
+    }
+    30.5% {
+      transform: translate(227px,50px);
+    }
+    33% {
+      transform: translate(227px,50px);
+    }
+    33.5% {
+      transform: translate(227px,100px);
+    }
+    36%{
+        transform: translate(227px,100px);
+    }
+    36.5%{
+        transform: translate(227px,150px);
+    }
+    39%{
+        transform: translate(227px,150px);
+    }
+
+    39.5% {
+      transform :translate(227px,200px);
+    }
+    42%{
+        transform:translate(227px,200px);
+    }
+    42.5%{
+        transform:translate(227px,250px);
+    }
+    45%{
+        transform: translate(227px,250px);
+    }
+    45.5%{
+        transform: translate(220px,300px);
+    }
+    46%{
+        transform: translate(220px,300px);
+    }
+    46.5%{
+        transform: translate(153px,300px);
+    }
+    47%{
+        transform :translate(153px,300px);
+      opacity: 100;
+    }
+    47.5%{
+        transform :translate(100px,300px);
+      opacity: 100;
+    }
+    100% {
+      transform :translate(100px,300px);
+      opacity: 100;
+    }
+  }
+  @keyframes is {
+    0% {
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    3% {
+      transform: translate(100px,-450px);
+    }
+    3.5% {
+      transform: translate(100px,-400px);
+    }
+    6% {
+      transform: translate(100px,-400px);
+    }
+    6.5% {
+      transform: translate(100px,-350px);
+    }
+    9%{
+        transform: translate(100px,-350px);
+    }
+    9.5%{
+        transform: translate(100px,-300px);
+    }
+    12%{
+        transform: translate(100px,-300px);
+    }
+
+    12.5% {
+      transform :translate(100px,-250px);
+    }
+    15% {
+      transform: translate(100px,-250px);
+    }
+    15.5% {
+      transform: translate(100px,-200px);
+    }
+    18% {
+      transform: translate(100px,-200px);
+    }
+    18.5% {
+      transform: translate(100px,-150px);
+    }
+    21% {
+      transform: translate(100px,-150px);
+    }
+    21.5%{
+        transform: translate(100px,-100px);
+    }
+    24%{
+        transform: translate(100px,-100px);
+    }
+    24.5%{
+        transform: translate(100px,-100px);
+    }
+    25%{
+        transform: translate(100px,-100px);
+    }
+    25.5%{
+        transform: translate(167px,-100px);
+    }
+
+    27% {
+      transform :translate(167px,-50px);
+    }
+    27.5% {
+      transform: translate(167px,0px);
+    }
+    30% {
+      transform: translate(167px,0px);
+    }
+    30.5% {
+      transform: translate(167px,50px);
+    }
+    33% {
+      transform: translate(167px,50px);
+    }
+    33.5% {
+      transform: translate(167px,100px);
+    }
+    36%{
+        transform: translate(167px,100px);
+    }
+    36.5%{
+        transform: translate(167px,150px);
+    }
+    39%{
+        transform: translate(167px,150px);
+    }
+
+    39.5% {
+      transform :translate(167px,200px);
+    }
+    42%{
+        transform:translate(167px,200px);
+    }
+    42.5%{
+        transform:translate(167px,250px);
+    }
+    45%{
+        transform: translate(167px,250px);
+    }
+    45.5%{
+        transform: translate(167px,300px);
+    }
+    46%{
+        transform: translate(167px,300px);
+    }
+    46.5%{
+        transform: translate(153px,300px);
+    }
+    47%{
+        transform :translate(153px,300px);
+      opacity: 100;
+    }
+    47.5%{
+        transform :translate(100px,300px);
+      opacity: 100;
+    }
+    100% {
+      transform :translate(100px,300px);
+      opacity: 100;
+    }
+  }@keyframes s {
+    0% {
+      transform: translate(100px,-450px);
+      opacity: 100;
+      
+    }
+    3% {
+      transform: translate(100px,-450px);
+    }
+    3.5% {
+      transform: translate(100px,-400px);
+    }
+    6% {
+      transform: translate(100px,-400px);
+    }
+    6.5% {
+      transform: translate(100px,-350px);
+    }
+    9%{
+        transform: translate(100px,-350px);
+    }
+    9.5%{
+        transform: translate(100px,-300px);
+    }
+    12%{
+        transform: translate(100px,-300px);
+    }
+
+    12.5% {
+      transform :translate(100px,-250px);
+    }
+    15% {
+      transform: translate(100px,-250px);
+    }
+    15.5% {
+      transform: translate(100px,-200px);
+    }
+    18% {
+      transform: translate(100px,-200px);
+    }
+    18.5% {
+      transform: translate(100px,-150px);
+    }
+    21% {
+      transform: translate(100px,-150px);
+    }
+    21.5%{
+        transform: translate(100px,-100px) ;
+    }
+    24%{
+        transform: translate(100px,-100px);
+    }
+    24.5%{
+        transform: translate(150px,-100px);
+    }
+    25%{
+        transform: translate(150px,-100px);
+    }
+    25.5%{
+        transform: translate(227px,-100px);
+    }
+
+    27% {
+      transform :translate(227px,-50px);
+    }
+    27.5% {
+      transform: translate(227px,0px);
+    }
+    30% {
+      transform: translate(227px,0px);
+    }
+    30.5% {
+      transform: translate(227px,50px);
+    }
+    33% {
+      transform: translate(227px,50px);
+    }
+    33.5% {
+      transform: translate(227px,100px);
+    }
+    36%{
+        transform: translate(227px,100px);
+    }
+    36.5%{
+        transform: translate(227px,150px);
+    }
+    39%{
+        transform: translate(227px,150px);
+    }
+
+    39.5% {
+      transform :translate(227px,200px);
+    }
+    42%{
+        transform:translate(227px,200px);
+    }
+    42.5%{
+        transform:translate(227px,250px);
+    }
+    45%{
+        transform: translate(227px,250px);
+    }
+    45.5%{
+        transform: translate(220px,300px);
+    }
+    46%{
+        transform: translate(220px,300px);
+    }
+    46.5%{
+        transform: translate(153px,300px);
+    }
+    47%{
+        transform :translate(153px,300px);
+      opacity: 100;
+    }
+    47.5%{
+        transform :translate(100px,300px);
+      opacity: 100;
+    }
+    100% {
+      transform :translate(100px,300px);
+      opacity: 100;
+    }
+
+
+    
+  }
+  @keyframes type{  
+  from { height: 1; } 
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100;
+  }
+}@keyframes exclamation1 {
+    0%{
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    100%{
+      transform :translate(100px,307px);
+      opacity: 100;
+    }
+    
+} @keyframes exclamation2 {
+    0%{
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    100%{
+      transform :translate(100px,127px);
+      opacity: 100;
+    }
+    
+}
+@keyframes exclamation3 {
+    0%{
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    100%{
+      transform :translate(100px,7px);
+      opacity: 100;
+    }
+    
+}
+@keyframes exclamation4 {
+    0%{
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    100%{
+      transform :translate(100px,-120px);
+      opacity: 100;
+    }
+    
+}
+@keyframes exclamation5 {
+    0%{
+      transform: translate(100px,-450px);
+      opacity: 100;
+    }
+    100%{
+      transform :translate(100px,-300px);
+      opacity: 100;
+    }
+    
+} 
+
+#texto{
+  font-size: 72px;
+  overflow: hidden;
+  background: -webkit-linear-gradient(rgb(241, 237, 9), rgb(196, 23, 219));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Nova Square', cursive;
+  white-space: nowrap;
+  width: 25em;
+  animation: type 4s steps(60,start) forwards; 
+  opacity: 0;
+  animation-delay: 20s;
+  text-align: center;
+  position: absolute;
+  
+
+}
+  .yellow{
+    animation-name: tetris;
+    animation-duration: 7s ;
+    animation-iteration-count: 1;
+    animation-timing-function:  linear ;
+    animation-direction: normal;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
+  .blue{
+    animation-name: etris;
+    animation-duration: 7s ;
+    animation-iteration-count: 1;
+    animation-timing-function:  linear ;
+    animation-direction: normal;
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards;
+    
+  }
+  .pink{
+    animation-name: tris;
+    animation-duration: 7s ;
+    animation-iteration-count: 1;
+    animation-timing-function:  linear ;
+    animation-direction: normal;
+    animation-delay: 4.5s;
+    animation-fill-mode: forwards;
+  }
+  .green{
+    animation-name: ris;
+    animation-duration: 7s ;
+    animation-iteration-count: 1;
+    animation-timing-function:  linear ;
+    animation-direction: normal;
+      animation-delay: 7.5s;
+    animation-fill-mode: forwards;
+  
+  }
+  .red{
+    animation-name: is;
+    animation-duration: 7s ;
+    animation-iteration-count: 1;
+    animation-timing-function:  linear ;
+    animation-direction: normal;
+    animation-delay: 10.5s;
+    animation-fill-mode: forwards;
+  
+  }
+
+  .purple{
+    animation-name: s;
+    animation-duration: 7s ;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+    animation-direction:normal;
+    animation-delay: 13.5s;
+    animation-fill-mode: forwards;
+  
+  }
+
+  .excla1{
+    animation-name: exclamation1;
+    animation-duration: 1s ;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+    animation-direction:normal;
+    animation-delay: 16.5s;
+    animation-fill-mode: forwards;
+  }
+  .excla2{
+    animation-name: exclamation2;
+    animation-duration: 1s ;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+    animation-direction:normal;
+    animation-delay: 17s;
+    animation-fill-mode: forwards;
+  }
+  .excla3{
+    animation-name: exclamation3;
+    animation-duration: 1s ;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+    animation-direction:normal;
+    animation-delay: 17.5s;
+    animation-fill-mode: forwards;
+  }
+  .excla4{
+    animation-name: exclamation4;
+    animation-duration: 1s ;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+    animation-direction:normal;
+    animation-delay: 18s;
+    animation-fill-mode: forwards;
+  }
+  .excla5{
+    animation-name: exclamation5;
+    animation-duration: 1s ;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+    animation-direction:normal;
+    animation-delay: 18.5s;
+    animation-fill-mode: forwards;
+  }
+  svg{
+    margin-left:auto;
+   margin-right:auto;
+   display:block;
+   position: absolute;
+  }
+  .button{
+  position:relative;
+  display:inline-block;
+  margin-top: 800px;
+   margin-left: 1500px;
+}
+
+.button a{
+  color:white;
+  font-family: 'Nova Square', cursive;
+  font-weight:bold;
+  font-size:36px;
+  text-align: center;
+  text-decoration:none;
+  background-color:rgb(196, 23, 219);
+  display:block;
+  position:relative;
+  padding:20px 40px;
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: dropshadow(color=#000, offx=0px, offy=1px);
+  
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 rgb(106, 9, 119);
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 rgb(106, 9, 119);
+  box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 rgb(106, 9, 119);
+  
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.button a:active{
+  top:10px;
+  background-color:rgb(169, 18, 189);
+  
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 rgb(106, 9, 119);
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 rgb(106, 9, 119);
+  box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 rgb(106, 9, 119);
+}
+
+.button:after{
+  content:"";
+  height:100%;
+  width:100%;
+  padding:4px;
+  position: absolute;
+  bottom:-15px;
+  left:-4px;
+  z-index:-1;
+  background-color:#2B1800;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+}
+body{
+  background:#1b1b1b;
+}
+    </style>
+</head>
+<body>
+
+    <svg width="1800" height="750" >
+        <rect class="yellow" x="300" y="50" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="300" y="110" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="300" y="170" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="300" y="230" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="300" y="290" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="240" y="50" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="180" y="50" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="360" y="50" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+        <rect class="yellow" x="420" y="50" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" />
+
+        <rect class="blue" x="360" y="110" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="blue" x="360" y="170" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="blue" x="360" y="170" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="blue" x="360" y="230" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="360" y="290" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="360" y="350" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="420" y="110" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="420" y="230" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="420" y="350" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="480" y="110" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="480" y="230" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="blue" x="480" y="350" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0"/>
+        
+        <rect class="pink" x="420" y="290" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="pink" x="480" y="290" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="540" y="290" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="540" y="230" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="540" y="290" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="540" y="170" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="540" y="110" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="540" y="50" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="600" y="290" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="pink" x="660" y="290" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0"/>
+
+        <rect class="green" x="600" y="350" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="green" x="600" y="230" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="green" x="600" y="170" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="green" x="600" y="110" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="green" x="600" y="50" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="green" x="720" y="290" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="green" x="750" y="350" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="green" x="690" y="230" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="green" x="660" y="170" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="green" x="750" y="110" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="green" x="720" y="170" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="green" x="720" y="50" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+        <rect class="green" x="660" y="50" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0"/>
+
+        <rect class="red" x="780" y="50" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="840" y="50" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="900" y="50" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="840" y="110" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="840" y="170" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="840" y="230" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="840" y="290" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="780" y="290" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="red" x="900" y="290" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        
+        <rect class="purple" x="1020" y="290" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="1020" y="230" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="1020" y="350" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="900" y="170" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="960" y="350" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="900" y="230" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="900" y="350" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="900" y="110" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="960" y="110" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="1020" y="110" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="purple" x="960" y="230" height="50" width="50" fill="#A711EE" stroke="black" stroke-width="5px" opacity="0" />
+        
+        <rect class="excla1" x="1320" y="350" height="50" width="50" fill="#f6d009" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="excla2" x="1320" y="410" height="50" width="50" fill="#e91680" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="excla3" x="1320" y="470" height="50" width="50" fill="#16e97f" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="excla4" x="1320" y="530" height="50" width="50" fill="#E21D29" stroke="black" stroke-width="5px" opacity="0" />
+        <rect class="excla5" x="1320" y="650" height="50" width="50" fill="#199ce6" stroke="black" stroke-width="5px" opacity="0" />
+        
+        <div>
+    <h1 id="texto">
+      It's Tetris! Let's play!
+  </h1>
+</div>
+<div ontouchstart="">
+  <div class="button">
+    <a href="new Tetris.html">Let's Play!</a>
+  </div>
+</div>
+    </svg>
+    
+
+</body>
+</html>

@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tétris</title>
+
+    <style>
+    body{
+        background:#1b1b1b;
+    }
+    canvas{
+        background:#1b1b1b;        
+    }
+    </style>
 </head>
 
 <body>
@@ -363,21 +372,21 @@
                     if (this.placement[i][j] == 1) {
                         let pixel = ctx.getImageData(this.x + col + 20, this.y + row + 20, 1, 1)
                         //pixel.data[0] = R , [1] = G , [2] B , [3] opacity
-                        //RGB != 255 255 255
+                        //RGB != 27 27 27
                         //252
 
 
                         //COLISOES COM PEÇAS (X)
-                        if (leftKey && (pixel.data[0] != 255 || pixel.data[0] != 255 || pixel.data[0] != 255)) {
+                        if (leftKey && (pixel.data[0] != 27 || pixel.data[0] != 27 || pixel.data[0] != 27)) {
                             this.x += pieceSize
                         }
 
-                        if (rightKey && (pixel.data[0] != 255 || pixel.data[0] != 255 || pixel.data[0] != 255)) {
+                        if (rightKey && (pixel.data[0] != 27 || pixel.data[0] != 27 || pixel.data[0] != 27)) {
                             this.x -= pieceSize
                         }
 
 
-                        if (pixel.data[0] != 255 || pixel.data[0] != 255 || pixel.data[0] != 255) {
+                        if (pixel.data[0] != 27 || pixel.data[0] != 27 || pixel.data[0] != 27) {
                             this.y -= pieceSize;
                             this.moving = false;
                             score = score + 40
@@ -434,7 +443,7 @@
 
     function render() {
         //clear canvas
-        ctx.fillStyle = "rgba(255, 255, 255)"
+        ctx.fillStyle = "rgba(27, 27, 27)"
         ctx.fillRect(0, 0, W, H)
 
         //draw GRID
@@ -448,7 +457,7 @@
             ctx.lineTo(W, y);
         }
 
-        ctx.strokeStyle = "#FCE3BF";
+        ctx.strokeStyle = "rgba(252, 227, 191, 0.3)";
         ctx.stroke();
 
         for (let i = 0; i < gameArray.length - 1; i++) {
